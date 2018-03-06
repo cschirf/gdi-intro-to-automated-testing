@@ -690,9 +690,460 @@ describe('test class', function() {
             </p>
             <p class="keyword">
               <b>
-                What do our test cases look like?
+                What do our test cases look like? Are there any open questions?
               </b>
             </p>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              Possible test cases
+            </h2>
+<pre>
+<code class="javascript">
+// should return the correct number abbreviation
+//   0 -> 0
+//   522 -> 522
+//   1000 -> 1K
+//   1200000 -> 1.2M
+//   15989000000 -> 16.0B
+//   1262842000000 -> 1.3T
+</code>
+</pre>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              Open Questions
+            </h2>
+            <ul>
+              <li>
+                What kind of rounding?
+              </li>
+              <li>
+                Should 1 decimal place always be used or only when necessary?
+              </li>
+              <li>
+                What happens if a number is greater than trillions?
+              </li>
+              <li>
+                Should negative numbers be formatted?
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              Open Questions
+            </h2>
+            <ul>
+              <li>
+                What kind of rounding?
+                <br /><b>Round half up</b>
+              </li>
+              <li>
+                Should 1 decimal place always be used or only when necessary?
+                <br /><b>Always if abbreviated</b>
+              </li>
+              <li>
+                What happens if a number is greater than trillions?
+                <br /><b>Just go up to trillions.</b>
+              </li>
+              <li>
+                Should negative numbers be formatted?
+                <br /><b>Yes. Abbreviate based on the absolute value.</b>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              Possible test cases
+            </h2>
+<pre>
+<code class="javascript">
+// should return the correct number abbreviation
+//   0 -> 0
+//   522 -> 522
+//   1 000 -> 1.0K
+//   1 200 000 -> 1.2M
+//   15 989 000 000 -> 16.0B
+//   1 262 842 000 000 -> 1.3T
+//   100 000 000 000 000 000 -> 100000.0T
+//   -499 -> -499
+//   -9368 -> -9.4K
+//   -8 320 000 -> -8.3M
+//   -28 900 000 000 -> -28.9B
+//   -6 183 000 000 000 -> -6.2T
+//   -100 000 000 000 000 000 -> -100000.0T
+</code>
+</pre>
+          </div>
+        </section>
+
+        <!-- COPY ME -->
+        <section>
+          <div class="wrap size-70 aligncenter shrink">
+            <h2>
+              TDD Approach: Review
+            </h2>
+            <ol>
+              <li>
+                Write test cases
+              </li>
+              <li>
+                Write shell&mdash; write enough code to get the tests to <em>compile</em>
+              </li>
+              <li>
+                All tests should fail <em>for the expected reason(s)</em>
+                (e.g., because the implementation is not correct, <em>not</em> compile or runtime errors).
+                At this point, check failure messages to ensure they accurately indicate the problem.
+                Fix wording as necessary.
+              </li>
+              <li>
+                Write enough code to get the tests to pass. For a problem like
+                the one above that is reasonably complex, you might consider
+                taking an iterative approach to the code&mdash; e.g. write
+                enough code to get part of the test suite to pass, then work on the next piece.
+              </li>
+              <li>
+                Take another pass over the code and <em>refactor</em> as necessary.
+                Re-run the tests to ensure the refactor has not broken functionality.
+              </li>
+            </ol>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>Step 1: Write the tests</h2>
+<pre>
+<code class="javascript">
+describe("formatNumber", function() {
+  it("does not format input with abs values of less than a thousand", function() {
+    expect(formatNumber(0)).toBe('0');
+    expect(formatNumber(522)).toBe('522');
+    expect(formatNumber(-499)).toBe('-499');
+  });
+
+  it("correctly formats input with abs values of over a trillion", function() {
+    expect(formatNumber(100000000000000000)).toBe('100000.0T');
+    expect(formatNumber(-100000000000000000)).toBe('-100000.0T');
+  });
+
+  it("correctly formats input with abs value of thousands, millions, billions, and trillions", function() {
+    expect(formatNumber(1000)).toBe('1.0K');
+    expect(formatNumber(1200000)).toBe('1.2M');
+    expect(formatNumber(15989000000)).toBe('16.0B');
+    expect(formatNumber(1262842000000)).toBe('1.3T');
+    expect(formatNumber(-8320000)).toBe('-8.3M');
+    expect(formatNumber(-28900000000)).toBe('-28.9B');
+    expect(formatNumber(-6183000000000)).toBe('-6.2T');
+  });
+});
+</code>
+</pre>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <p>
+              If we look at the tests now, we should see
+            </p>
+            <p>
+              <span class="mono">
+                ReferenceError: formatNumber is not defined
+              </span>
+            </p>
+            <p>
+              This is expected because, at this point, we have not yet declared
+              a function called <span class="mono">formatNumber</span>. However,
+              although the tests are failing, they are not failing in the way we
+              want. They should say that they are failing because the expectation failed.
+              We&rsquo;ll fix the <span class="mono">ReferenceError</span>
+              in the next step when we create the function shell.
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>Step 2: Write the shell</h2>
+            <p>
+              Our goal is to write <em>just enough</em> code to get the tests to
+              demonstrate the kind of error message we want to get when the
+              implementation is incorrect.
+            </p>
+<pre>
+<code class="javascript">
+function formatNumber(input) {
+  return null;
+}
+</code>
+</pre>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              Step 3: Check for failing tests (RED)
+            </h2>
+            <p>
+              Our tests are still failing, but the message looks a lot better, e.g.:
+            </p>
+            <p>
+              <span class="mono">
+                Expected null to be '16.0B'.
+              </span>
+            </p>
+            <p>
+              In this example, the wording adequately describes the problem if another
+              developer later breaks this functionality, so we&rsquo;ll move on.
+            </p>
+            <p>
+              However, if this were not the case, we would
+              want to take some time to make sure that when this test fails in the
+              future, it is obvious to the developer who broke it why that is.
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              Step 4: The fun part (GREEN)
+            </h2>
+            <p>
+              Finally! The exciting part. We get to solve the problem.
+            </p>
+            <p>
+              Because this the business problem is somewhat complex, we&rsquo;ll
+              do the &ldquo;basic&rdquo; cases first, then move onto the harder part
+              of the problem.
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              Step 4a: Basic cases
+            </h2>
+            <p>
+              If the absolute value of given input is less a thousand, we
+              essentially leave it alone.
+            </p>
+
+<h3>Try 1</h3>
+<pre>
+<code class="javascript">
+function formatNumber(input) {
+  if (Math.abs(input) < 1000) {
+    return input;
+  }
+
+  return null;
+}
+</code>
+</pre>
+
+            <h3>Oops.</h3>
+            <p class="mono">
+              Expected 0 to be '0'.
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <p>
+              Even though we&rsquo;re not formatting the number, we should still
+              return a string for consistency.
+            </p>
+<pre>
+<code class="javascript">
+function formatNumber(input) {
+  if (Math.abs(input) < 1000) {
+    return input.toString();
+  }
+
+  return null;
+}
+</code>
+</pre>
+
+            <p>
+              Now the test for <span class="mono">
+                does not format input with abs values of less than a thousand
+              </span> passes. The other two tests still fail as expected.
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              Step 4b: The rest of it
+            </h2>
+            <p>
+              Take a few minutes to come up with a solution to the rest of the problem.
+            </p>
+            <p>
+              Feel free to work with a partner!
+            </p>
+            <p>
+              Also, because rounding in Javascript can be a pain, feel free to use
+              the following helper function to correctly do a round half-up.
+            </p>
+            <h3>Helper Rounding Function</h3>
+<pre>
+<code class="javascript">
+function roundBetter(number, precision) {
+    var factor = Math.pow(10, precision);
+    var tempNumber = number * factor;
+    var roundedTempNumber = Math.round(tempNumber);
+    return roundedTempNumber / factor;
+}
+</code>
+</pre>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              Example initial implementation
+            </h2>
+<pre>
+<code class="javascript" style="font-size: 0.9em;">
+  var MAGNITUDE_TO_LETTER_ABBREVIATION = {
+    0: '',
+    1: 'K',
+    2: 'M',
+    3: 'B',
+    4: 'T'
+  };
+
+  function roundBetter(number, precision) { ... }
+
+  function recursivelyFormatNumber(input, numRecursions) {
+    if (Math.abs(input) < 1000) {
+      return roundBetter(input, 1).toFixed(1).toString() + MAGNITUDE_TO_LETTER_ABBREVIATION[numRecursions];
+    }
+
+    if (numRecursions === 4) {
+      return roundBetter(input, 1).toFixed(1).toString() + MAGNITUDE_TO_LETTER_ABBREVIATION[numRecursions];
+    }
+
+    return recursivelyFormatNumber(input/1000, numRecursions+1);
+  }
+
+  function formatNumber(input) {
+    if (Math.abs(input) < 1000) {
+      return input.toString();
+    }
+
+    return recursivelyFormatNumber(input, 0);
+  }
+</code>
+</pre>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              Step 5: Refactor
+            </h2>
+            <p>
+              The inital implementation works, but there is a lot of room to
+              clean and DRY up what we did.
+            </p>
+            <p>
+              In this step, we clean up our working code, using our tests as a
+              safety net.
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <p>
+              Take a few minutes to look over your code and make any desired refactors.
+            </p>
+            <p>
+              Feel free to work with a partner!
+            </p>
+          </div>
+        </section>
+
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              Example refactored implementation
+            </h2>
+<pre>
+<code class="javascript" style="font-size: 0.85em;">
+  var DIVISOR = 1000;
+  var NUM_DECIMAL_PLACES = 1;
+  var MAX_RECURSIONS_ALLOWED = 4;
+
+  var MAGNITUDE_TO_LETTER_ABBREVIATION = {
+    0: '',
+    1: 'K',
+    2: 'M',
+    3: 'B',
+    4: 'T'
+  };
+
+  function roundBetter(number, precision) { ... }
+
+  function formatNumberStr(input, numRecursions) {
+    var numAsStr = roundBetter(input, NUM_DECIMAL_PLACES).toFixed(NUM_DECIMAL_PLACES).toString();
+    return numAsStr + MAGNITUDE_TO_LETTER_ABBREVIATION[numRecursions]
+  }
+
+  function recursivelyFormatNumber(input, numRecursions) {
+    if (Math.abs(input) < DIVISOR || numRecursions === MAX_RECURSIONS_ALLOWED) {
+      return formatNumberStr(input, numRecursions);
+    }
+
+    return recursivelyFormatNumber(input/DIVISOR, numRecursions+1);
+  }
+
+  function formatNumber(input) {
+    if (Math.abs(input) < DIVISOR) {
+      return input.toString();
+    }
+
+    return recursivelyFormatNumber(input, 0);
+  }
+</code>
+</pre>
+          </div>
+        </section>
+
+
+
+
+
+
+
+
+        <!-- COPY ME -->
+        <section>
+          <div class="wrap size-70 aligncenter">
           </div>
         </section>
 
