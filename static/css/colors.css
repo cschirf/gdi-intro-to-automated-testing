@@ -2,41 +2,10 @@
 WebSlides - Colors
 =========================================== */
 
-/* == Backgrounds == */
-
-/* .bg-primary */
-/* .bg-secondary */
-/* .bg-light */
-
-/* == General == */
-/* .bg-white */
-/* .bg-black */
-/* .bg-black-blue */
-/* .bg-brown */
-/* .bg-blue */
-/* .bg-gray */
-/* .bg-purple */
-/* .bg-red */
-
-/* == Brands == */
-/* .bg-apple */
-/* .bg-facebook */
-
-/* == Gradients == */
-/* .bg-gradient-r (radial) */
-/* .bg-gradient-h (horizontal) */
-/* .bg-gradient-v (vertical) */
-/* .bg-gradient-white */
-/* .bg-gradient-gray */
-
-/* == Transparent/Opacity Black == */
-/* .bg-trans-dark */
-/* .bg-trans-light */
-/* .bg-trans-gradient */
-
-
 @import url('https://fonts.googleapis.com/css?family=Oxygen');
 @import url('https://fonts.googleapis.com/css?family=Cabin:400,400i,500,500i,600,600i,700,700i&subset=latin-ext');
+@import url('https://fonts.googleapis.com/css?family=Lato:400,400i,700,700i');
+@import url('https://fonts.googleapis.com/css?family=Quattrocento+Sans:400,400i,700,700i');
 
 /*=========================================
 Base
@@ -45,7 +14,7 @@ Base
 body {
   color: #D3D3D3;
   background-color: #2d3e50;
-  font-family: Cabin, Helvetica, serif, sans-serif;
+  font-family: 'Quattrocento Sans', Helvetica, serif, sans-serif;
   font-size: 2em;
   line-height: 1.0;
 }
@@ -70,7 +39,8 @@ p {
 h2,
 h3,
 h4 {
-  color: #e64c66;
+  /*color: #e64c66;*/
+  color: #1bbc9b;
 }
 
 h2 {
@@ -83,6 +53,7 @@ h3 {
   text-align: left;
   padding-top: 0.3em;
   color: #1bbc9b;
+  font-weight: bold;
 }
 
 ul,
@@ -120,6 +91,10 @@ strong {
   font-weight: 800;
 }
 
+.keyword {
+  color: #1bbc9b;
+}
+
 .header--small {
   color: #1bbc9b;
 }
@@ -152,7 +127,8 @@ a:hover {
   text-decoration: underline;
 }
 
-.flexblock li>a,[class*="bg-"] li>a,
+.flexblock li>a,
+[class*="bg-"] li>a,
 [class*="bg-gradient-"] li>a,
 article header a {
   color: inherit;
@@ -175,43 +151,61 @@ acronym {
 
 mark,
 ins {
-background-color: rgba(221,238,255, 0.8);
-color: inherit;
+  background-color: rgba(221, 238, 255, 0.8);
+  color: inherit;
 }
 
 ::-moz-selection {
-    background-color: rgba(221,238,255, 0.8);
+  background-color: rgba(221, 238, 255, 0.8);
 }
 
 ::-webkit-selection {
-    background-color: rgba(221,238,255, 0.8);
+  background-color: rgba(221, 238, 255, 0.8);
 }
 
 ::selection {
-    background-color: rgba(221,238,255, 0.8);
+  background-color: rgba(221, 238, 255, 0.8);
 }
 
 pre {
   border: 1px solid rgba(0, 20, 80, 0.1);
-  box-shadow: 0 8px 16px rgba(0,20,80,.04),0 4px 16px rgba(0,0,0,.08);
+  box-shadow: 0 8px 16px rgba(0, 20, 80, .04), 0 4px 16px rgba(0, 0, 0, .08);
   background: #272822;
 }
 
 pre:hover {
-  box-shadow: 0 8px 16px rgba(0,40,160,.08),0 8px 24px rgba(0,0,0,.08);
+  box-shadow: 0 8px 16px rgba(0, 40, 160, .08), 0 8px 24px rgba(0, 0, 0, .08);
 }
 
-code,[class*="bg-"] pre {
+code,
+[class*="bg-"] pre {
   background-color: rgba(255, 255, 255, 0.09);
 }
 
-.bg-white code{
-    background: rgba(0, 20, 80, 0.03);
+.bg-white code {
+  background: rgba(0, 20, 80, 0.03);
 }
+
+.red {
+  /*color: #bf202b;*/
+  color: #ed2533;
+}
+
+.green {
+  /*color: #12752d;*/
+  color: #1fa844;
+}
+
+.refactor {
+  /*color: #1a82bf;*/
+  color: #4cb8f7;
+}
+
 
 /*================================================
 Slides - Backgrounds <section class="bg-primary">
 ================================================== */
+
 
 /*3 Corp Colors*/
 
@@ -226,6 +220,7 @@ Slides - Backgrounds <section class="bg-primary">
 .bg-light {
   background-color: #edf2f7;
 }
+
 
 /*General Colors*/
 
@@ -270,7 +265,9 @@ Slides - Backgrounds <section class="bg-primary">
   color: #333;
 }
 
+
 /*Font Color*/
+
 .bg-trans-dark,
 .bg-trans-gradient,
 .bg-primary,
@@ -295,6 +292,7 @@ Slides - Backgrounds <section class="bg-primary">
   color: #666;
 }
 
+
 /*Transparent/Opacity*/
 
 .bg-trans-dark {
@@ -305,15 +303,18 @@ Slides - Backgrounds <section class="bg-primary">
   background: rgba(0, 0, 0, 0.2);
 }
 
+
 /*Covers/Longforms...*/
-.bg-trans-gradient{
-  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%,rgba(0,0,0,0) 100%);
+
+.bg-trans-gradient {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
 }
+
 
 /*Horizontal Gradient*/
 
 .bg-gradient-h {
-  background: linear-gradient(134deg,#32b 0,#62b 100%);
+  background: linear-gradient(134deg, #32b 0, #62b 100%);
 }
 
 
@@ -330,21 +331,27 @@ Slides - Backgrounds <section class="bg-primary">
   background: radial-gradient(ellipse at center, #62b 0%, #32b 100%);
 }
 
+
 /*White Gradient (vertical)*/
+
 .bg-gradient-white {
-  background: linear-gradient(180deg,#f2f4f6 0,#fff 100%);
+  background: linear-gradient(180deg, #f2f4f6 0, #fff 100%);
   color: #333;
   text-shadow: none;
 }
+
 
 /*Gray Gradient (horizontal)*/
+
 .bg-gradient-gray {
-  background: linear-gradient(90deg,#f7f9fb 0,#dee2e6 100%);
+  background: linear-gradient(90deg, #f7f9fb 0, #dee2e6 100%);
   color: #333;
   text-shadow: none;
 }
 
+
 /*Border/Frame*/
+
 .frame {
   border: .8rem solid #fff;
 }
@@ -353,7 +360,9 @@ Slides - Backgrounds <section class="bg-primary">
   border-width: .2rem;
 }
 
+
 /*Layer/Box Shadow*/
+
 .shadow,
 .pre {
   position: relative;
@@ -364,15 +373,18 @@ Slides - Backgrounds <section class="bg-primary">
   box-shadow: 0 16px 24px rgba(0, 20, 80, 0.3);
 }
 
+
 /*============================
 TYPOGRAPHY
 ============================== */
 
+
 /* -- Horizontal separator  -- */
 
 .text-separator:before {
-    background-color: rgba(170, 0, 0, 0.8);
+  background-color: rgba(170, 0, 0, 0.8);
 }
+
 
 /* -- Pull Quote (Right/Left)  -- */
 
@@ -380,9 +392,11 @@ TYPOGRAPHY
   border-top: 4px solid rgba(0, 0, 0, 0.5);
 }
 
-img[class*="text-pull-"],figure[class*="text-pull-"] {
+img[class*="text-pull-"],
+figure[class*="text-pull-"] {
   border-top: none;
 }
+
 
 /* -- Context  -- */
 
@@ -395,10 +409,13 @@ img[class*="text-pull-"],figure[class*="text-pull-"] {
   background-color: rgba(0, 20, 80, 0.2);
 }
 
+
 /* -- Text shadow  -- */
+
 .text-shadow {
   text-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
 }
+
 
 /* -- time, ampersands, prepositions (for, of...), symbols...  -- */
 
@@ -407,11 +424,14 @@ h1 span {
   color: #abd;
 }
 
+
 /* -- <pre> comment  -- */
+
 .code-comment {
   color: rgba(70, 170, 130, 0.9);
   text-shadow: none;
 }
+
 
 /*=========================================
 Header/Nav
@@ -446,6 +466,7 @@ nav[role=navigation] li.active a {
 nav li.twitter a:hover {
   background-color: #1da1f3;
 }
+
 nav li.facebook a:hover {
   background-color: #3b5998;
 }
@@ -466,6 +487,7 @@ nav li.email a:hover {
   background: #dd4b39;
 }
 
+
 /*===================================================
 .flexblock li hover/active
 ===================================================== */
@@ -477,12 +499,13 @@ nav li.email a:hover {
   background-color: rgba(0, 20, 80, 0.03);
 }
 
+
 /*=========================================
 Features & Clients List
 =========================================== */
 
 .features li,
-.clients li  {
+.clients li {
   background-color: rgba(255, 255, 255, 0.9);
 }
 
@@ -492,9 +515,10 @@ Features & Clients List
 }
 
 .features li:hover,
-.clients li:hover  {
-  box-shadow: 0 8px 16px rgba(0,20,80,.02),0 4px 16px rgba(0,0,0,.08);
+.clients li:hover {
+  box-shadow: 0 8px 16px rgba(0, 20, 80, .02), 0 4px 16px rgba(0, 0, 0, .08);
 }
+
 
 /*============================
 .flexblock with border
@@ -513,6 +537,7 @@ Features & Clients List
 .flexblock.border li li {
   border: none;
 }
+
 
 /*===========================================
 flexblock.steps
@@ -545,20 +570,16 @@ flexblock.steps
 }
 
 @media (min-width: 1024px) {
-
   .process.step-2 {
     border-left-color: #e8eef7;
   }
-
   .process.step-3 {
     border-left-color: #dde5f3;
   }
-
   .process.step-4 {
     border-left-color: #cdd8ec;
   }
-
-  .steps li:hover + li [class*="step-"] {
+  .steps li:hover+li [class*="step-"] {
     border-left-color: #b8cef7;
   }
 }
@@ -576,7 +597,9 @@ Items: You can use for settings, drag&drop, close/delete...
   background: none;
 }
 
+
 /*.specs li {background: rgba(255,255,255,0.2);}*/
+
 
 /*=========================================================
 Why/Steps/Motivation/Reasons -  Decimal/Numbers
@@ -589,6 +612,7 @@ Why/Steps/Motivation/Reasons -  Decimal/Numbers
 .reasons li:last-child:after {
   background: none;
 }
+
 
 /*=========================================
 Overlays
@@ -627,7 +651,7 @@ Gallery li+.overlay+image
 }
 
 .gallery li footer {
-  border-top:1px solid rgba(0,20,80,0.1);
+  border-top: 1px solid rgba(0, 20, 80, 0.1);
 }
 
 .gallery li a {
@@ -635,9 +659,10 @@ Gallery li+.overlay+image
   text-shadow: none;
 }
 
-.flesblock.gallery li a footer{
+.flesblock.gallery li a footer {
   color: #aaa;
 }
+
 
 /*Arrow */
 
@@ -645,7 +670,6 @@ Gallery li+.overlay+image
   border: .8rem solid black;
   border-color: transparent transparent #fff #fff;
 }
-
 
 
 /*=========================================
@@ -724,7 +748,8 @@ Resume/Work/CV/Portfolio
 Clients / Services / Logos...
 ============================================= */
 
-.clients.border figcaption {border-top:1px solid rgba(0,20,80,0.1);
+.clients.border figcaption {
+  border-top: 1px solid rgba(0, 20, 80, 0.1);
 }
 
 
@@ -779,6 +804,7 @@ Cards
   color: inherit;
 }
 
+
 /* ---  card ul specs --- */
 
 .description>li {
@@ -789,11 +815,13 @@ Cards
   border-bottom: none;
 }
 
+
 /*== Figure Background === */
 
 [class*="card-"][class*="bg-"] figure {
-background-color: rgba(0, 20, 80, 0.06);
+  background-color: rgba(0, 20, 80, 0.06);
 }
+
 
 /*== Ficaption Cards === */
 
@@ -893,8 +921,8 @@ input:focus::-webkit-input-placeholder {
   color: #ddd;
 }
 
-a.button,[class*="badge-"]
-button[type="submit"],
+a.button,
+[class*="badge-"] button[type="submit"],
 input {
   box-shadow: 0px 10px 16px -8px rgba(0, 20, 80, 0.3);
 }
@@ -942,8 +970,8 @@ input[type="submit"]:active {
 .bg-primary button,
 .bg-primary button:hover,
 .bg-primary input,
-[class*="bg-gradient-"] .button,[class*="bg-"] a.button.ghost
-{
+[class*="bg-gradient-"] .button,
+[class*="bg-"] a.button.ghost {
   border-color: #fff;
 }
 
@@ -990,10 +1018,10 @@ select:hover {
   background-color: #000;
 }
 
-
 form .flexblock li:hover {
   background-color: rgba(0, 0, 0, 0.05);
 }
+
 
 /*============================
 Table of Contents
@@ -1023,6 +1051,7 @@ Slides (Counter/Arrows)
   color: #fff;
   background-color: rgba(0, 0, 0, 0.9);
 }
+
 
 /*============================
 Footer
