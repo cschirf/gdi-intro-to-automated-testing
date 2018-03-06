@@ -35,6 +35,9 @@ WebSlides - Colors
 /* .bg-trans-gradient */
 
 
+@import url('https://fonts.googleapis.com/css?family=Oxygen');
+@import url('https://fonts.googleapis.com/css?family=Cabin:400,400i,500,500i,600,600i,700,700i&subset=latin-ext');
+
 /*=========================================
 Base
 =========================================== */
@@ -42,6 +45,65 @@ Base
 body {
   color: #D3D3D3;
   background-color: #2d3e50;
+  font-family: Cabin, Helvetica, serif, sans-serif;
+  font-size: 2em;
+  line-height: 1.0;
+}
+
+p {
+  font-size: 2em;
+  text-align: left;
+  padding-bottom: 2rem;
+}
+
+.center {
+  text-align: center
+}
+
+.center-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+h2,
+h3,
+h4 {
+  color: #e64c66;
+}
+
+h2 {
+  font-size: 300%;
+  padding-bottom: 0.3em;
+  font-weight: bold;
+}
+
+h3 {
+  text-align: left;
+  padding-top: 0.3em;
+  color: #1bbc9b;
+}
+
+ul,
+ol,
+ul ul {
+  text-align: left;
+  font-size: 2em;
+}
+
+ul,
+ul ul {
+  list-style: disc;
+}
+
+li {
+  line-height: 1.0;
+  padding-bottom: 0.5em;
+}
+
+.header--small {
+  color: #1bbc9b;
 }
 
 :focus {

@@ -16,7 +16,7 @@
     -->
 
     <!-- SEO -->
-    <title>WebSlides: Making HTML presentations easy</title>
+    <title>GDI: Intro to Testing with application in JS/Jasmine</title>
     <meta name="description" content="WebSlides is the easiest way to make HTML presentations, portfolios, and landings. Just essential features.">
 
     <!-- URL CANONICAL -->
@@ -67,7 +67,7 @@
 
   </head>
   <body>
-    <header role="banner">
+    <!-- <header role="banner">
       <nav role="navigation">
         <p class="logo"><a href="index.html" title="WebSlides">WebSlides</a></p>
         <ul>
@@ -87,10 +87,9 @@
               <em>@WebSlides</em>
             </a>
           </li>
-          <!--  <li class="dribbble"><a rel="external" href="http://dribbble.com/webslides" title="Dribbble"><svg class="fa-dribbble"><use xlink:href="#fa-dribbble"></use></svg> <em>webslides</em></a></li> -->
         </ul>
       </nav>
-    </header>
+    </header> -->
 
     <main role="main">
       <article id="webslides" class="vertical">
@@ -101,272 +100,575 @@
         -->
 
         <section>
-         <span class="background" style="background-image:url('https://webslides.tv/static/images/nature.jpg')"></span>
-          <!--.wrap = container (width: 90%) -->
           <div class="wrap aligncenter">
-            <h1><strong>Create beautiful stories</strong></h1>
-            <p class="text-intro">WebSlides makes HTML presentations easy.<br>
-              Just the essentials and using lovely CSS.
-            </p>
-            <p>
-              <a href="https://webslides.tv/webslides-latest.zip" class="button zoomIn" title="Download WebSlides for free">
-                <svg class="fa-cloud-download">
-                  <use xlink:href="#fa-cloud-download"></use>
-                </svg>
-                WebSlides
-              </a>
+            <img src="static/images/logo/circle-gdi-logo.png" style="padding-bottom: 30px;" />
+            <h1><strong>Introduction to Testing</strong></h1>
+            <p class="text-intro center">
+              <i>
+                Intro to automated testing philosophies, uses, and techniques with application to JS testing in Jasmine
+              </i>
             </p>
           </div>
-          <!-- .end .wrap -->
         </section>
+
+
         <section>
-          <!--.wrap = container (width: 90%) -->
-          <div class="wrap size-50 aligncenter">
-            <h2><strong>Why WebSlides?</strong></h2>
-            <p class="text-intro"><a href="demos/why-webslides.html" title="Why WebSlides?">Presentations</a>, <a href="demos/landings.html" title="Landings">landings</a>, <a href="demos/portfolios.html" title="Portfolios">portfolios</a>, and <a href="demos/longforms.html" title="Longforms">longforms</a>.</p>
-            <div class="bg-white shadow">
-              <ul class="flexblock reasons">
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              <i>
+                Welcome!
+              </i>
+            </h2>
+            <p class="text-intro">
+              Girl Develop It is here to provide affordable and accessible programs to learn software through mentorship and hands-on instruction.
+            </p>
+            <p class="center" style="color: #92BB44;">
+              Some &ldquo;rules&rdquo;
+            </p>
+            <ul>
+              <li>We are here for you!</li>
+              <li>Every question is important</li>
+              <li>Help each other</li>
+              <li>Have fun</li>
+            </ul>
+          </div>
+        </section>
+
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              Who to bug &amp; where to get stuff
+            </h2>
+            <h3 class="header--small">
+              Your beautiful TAs! Say hi, y&rsquo;all!
+            </h3>
+            <p>
+              Lulu
+              <br>
+              Frufru
+            </p>
+            <h3 class="header--small left">
+              Where to get these gorgeous slides:
+            </h3>
+            <p>
+              http://awesome-link.github.io
+            </p>
+            <h3 class="header--small left">
+              The chick teaching this:
+            </h3>
+            <p>
+              courtneys@girldevelopit.com
+            </p>
+          </div>
+        </section>
+
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              Tell us about yourself!
+            </h2>
+            <p>
+              What&rsquo;s your name? Preferred pronouns?
+            </p>
+            <p>
+              What are you hoping to get out of this class?
+            </p>
+            <p>
+              What song or meme are you really digging right now?
+            </p>
+          </div>
+        </section>
+
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              What you&rsquo;re getting into
+            </h2>
+            <p>
+              <ol>
                 <li>
-                  <h2>An opportunity to engage.</h2>
-                  <p>WebSlides is about good karma. This is about telling the story, and sharing it in a beautiful way. HTML and CSS as narrative elements.</p>
+                  What automated testing is
                 </li>
                 <li>
-                  <h2>Work better, faster.</h2>
-                  <p>Designers, marketers, and journalists can now focus on the content. Simply <a href="demos/index.html" title="WebSlides Demos">choose a demo</a> and customize it in minutes.</p>
+                  Why you should care
+                </li>
+                <li>
+                  Kinds of testing, testing philosophies and approaches
+                </li>
+                <li>
+                  Criticisms &amp; objection handling
+                </li>
+                <li>
+                  Writing some baller JS tests in Jasmine
+                </li>
+                <li>
+                  Best practices for each kind of testing
+                </li>
+              </ol>
+            </p>
+          </div>
+        </section>
+
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              Cool, so what&rsquo;s this automated testing thing?
+            </h2>
+            <p>
+              Automated tests are pieces of code that run your original code.
+            </p>
+            <p>
+              They can be very specific and only test a function or a part of a function,
+              or they can be coarse-grained and test an actual end-to-end scenario.
+            </p>
+            <p>
+              The real power of any kind of automated test is that is <em>automated</em>&mdash; it's a piece of code and you can do some cool stuff with it.
+            </p>
+          </div>
+        </section>
+
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              What automated testing gets you
+            </h2>
+            <h3>Minimize or prevent regressions</h3>
+            <p>
+              This applies to testing more broadly, but it deserves to be said explicitly:
+            </p>
+            <ul>
+              <li>
+                The only way to know if your code work is to test it.
+              </li>
+              <li>
+                Just because you tested it by hand doesn't mean you hit all the edge cases.
+              </li>
+              <li>
+                Your code working when you tested it at the time of writing it does not mean it works now.
+              </li>
+            </ul>
+            <!-- <p>
+              If you want to make sure your code works, you need to test it.
+              Just because your code worked yesterday or even this morning doesn't
+              mean that's true by the time it's pushed to prod.
+              It doesn't even mean that it works in all expected cases.
+              Especially when testing manually or when we feel under pressure to
+              get something out, it's hard to think critically about where the
+              rough edges and boundary cases are.
+            </p> -->
+          </div>
+        </section>
+
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              What automated testing gets you
+            </h2>
+            <h3>Confidence in refactoring/rewrites</h3>
+            <ul>
+              <li>
+                It's nerve-wracking to try to fix code when you're not sure if you'll break something in the process.
+              </li>
+              <li>
+                This is especially true if the code you're changing is significantly complex (i.e. actually worth anything).
+              </li>
+              <li>
+                So people usually don't clean it up. This is one very real reason for <strong>code rot</strong>.
+                (It is <em>not</em> a coincidence that often the most important pieces of code are the ugliest.)
+              </li>
+            </ul>
+          </div>
+        </section>
+
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              What automated testing gets you
+            </h2>
+            <h3>Minimize Feedback Cycle: <br />Speed &amp; Portability</h3>
+            <ul>
+              <li>
+                They run <em>much</em> faster than manual testing (they're code!)
+              </li>
+              <li>
+                You know very quickly if you've broken any functionality
+              </li>
+              <li>
+                Ideal setup: your tests run every time the code changes
+              </li>
+              <li>
+                You can run these tests in every environment<sup>*</sup>, including as part of the build process.
+              </li>
+            </ul>
+
+            <!-- <p>
+              Most testing libraries also allow you to set things up so your tests will run every time you make a code change.
+              This is ideal because the feedback cycle is the shortest it can be.
+            </p> -->
+            <!-- <p>
+              Unless you've got a much, much less-than-ideal setup, you can run these tests in every environment.
+              This means that you can include a test run each time your app builds.
+            </p> -->
+          </div>
+        </section>
+
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              What automated testing gets you
+            </h2>
+            <h3>Continuous deployment</h3>
+            <ul>
+              <li>
+                If your tests adequately cover the use cases in your app and they run with the build, then you can set up the build to deploy to prod after all the tests pass.
+              </li>
+              <li>
+                No humans needed, so this is wicked fast.
+              </li>
+              <li>
+                This is what most companies either do or aspire to do because it means you can push out code <em>all. the. time.</em> serious #bizzyV
+              </li>
+            </ul>
+          </div>
+        </section>
+
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              What automated testing gets you
+            </h2>
+            <h3>Tests as documentation</h3>
+            <ul>
+              <li>
+                If you've written good tests
+              </li>
+              <li>
+
+              </li>
+              <li>
+
+              </li>
+            </ul>
+          </div>
+        </section>
+
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              What automated testing gets you
+            </h2>
+            <h3>Responsibility for code quality</h3>
+            <ul>
+              <li>
+                It's easy to throw problems onto someone else.
+              </li>
+              <li>
+                If you get used to doing that, it's easy to believe that code quality issues aren't your problem (spoiler: they are).
+              </li>
+              <li>
+                It's also easy to get sloppy because you expect someone else will find and/or fix your bugs for you.
+              </li>
+              <li>
+                This depends on your team, but ideally, this responsibility is shared, either amongst your team or a subset of your team.
+                <!-- prevent single point of failure, personal responsbility has issues -->
+              </li>
+            </ul>
+          </div>
+        </section>
+
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              What automated testing gets you
+            </h2>
+            <h3>Being a better developer</h3>
+            <ul>
+              <li>
+                Writing good test cases means thinking critically about the problem you've been given to solve.
+              </li>
+              <li>
+                This takes a certain mindset, but developing that mindset will make you a better engineer and more generally, a better problem solver.
+                After all, what is development but the application of logic? <&#47;philosophy>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <p>
+              If you're doing test-driven development (TDD) you get extra benefits.
+            </p>
+          </div>
+        </section>
+
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              Test-driven development
+            </h2>
+            <p>
+              You write your tests before you write the code.
+            </p>
+            <p>
+              Mantra: <strong>Red, Green, Refactor</strong>
+            </p>
+            <ol>
+              <li>
+                RED: Because you've written the test <em>before</em> the code, the test should fail.
+                You also need to make sure the test fails in the way you expect.
+                Bonus points for making sure you get a useful error message when it fails.
+              </li>
+              <li>
+                GREEN: Fix the test by writing the necessary code.
+              </li>
+              <li>
+                REFACTOR: Once the test passes, take another look at the code and see if you can make
+                it prettier. Because you have the test there as your safety net, you're assured you'll
+                know if your refactor breaks anything.
+              </li>
+            </ol>
+          </div>
+        </section>
+
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              What TDD gets you
+            </h2>
+            <h3>Requirements clarification / reduce time waste</h3>
+            <ul>
+              <li>
+                We don't always get clear-cut requirements.
+              </li>
+              <li>
+                When you write the test first, you have to know upfront exactly what's being asked of you, and that's ideal.
+              </li>
+              <li>
+                If you can't write the test, you know you don't have enough clarity on what's been asked.
+              </li>
+              <li>
+                You also know <em>where</em> you're missing clarity. You can take that information back to the appropriate people and work out what's needed before you waste development time.
+              </li>
+            </ul>
+          </div>
+        </section>
+
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              What TDD gets you
+            </h2>
+            <h3>Only write what you need</h3>
+            <ul>
+              <li>
+                Related to clarifying the requirements is the idea of gold-plating.
+                If we don't really know what's expected, we are likely to add extra code that doesn't really do anything.
+              </li>
+              <li>
+                But extra code means extra complexity and more to maintain.
+              </li>
+              <li>
+                Because you have a test, you can make sure you're only writing the code you
+                need to solve the problem. If you think there's something you can get rid of, great.
+                If the test still passes, you're golden.
+              </li>
+            </ul>
+          </div>
+        </section>
+
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              What TDD gets you
+            </h2>
+            <h3>Squash bugs better &amp; faster</h3>
+            <p>
+              The first step of debugging an issue is to reproduce it.
+              You can do that by writing a test! This is awesome because:
+              <ul>
+                <li>
+                  This helps to isolate the bug
+                </li>
+                <li>
+                  You can fix the bug faster because you can reproduce it reliably and quickly
+                </li>
+                <li>
+                  You have more confidence that you've really fixed the issue
+                </li>
+                <li>
+                  Now that case is part of the test suite, so you are also assured that you won't have that regression again
                 </li>
               </ul>
-            </div>
-            <!-- .end .bg-white shadow -->
-          </div>
-          <!-- .end .wrap -->
-        </section>
-        <section>
-          <!--.wrap = container (width: 90%) -->
-          <div class="wrap">
-            <div class="grid vertical-align">
-              <div class="column">
-                <h3><strong>WebSlides is really easy</strong></h3>
-                <p class="text-intro">Each parent <code>&lt;section&gt;</code> in the #webslides element is an individual slide. </p>
-                <p>Code is clean and scalable. It uses <strong>intuitive markup</strong> with popular naming conventions. There's no need to overuse classes or nesting. <strong>Making an HTML presentation has never been so fast</strong>.</p>
-              </div>
-              <!-- .end .column -->
-              <div class="column">
-                <pre>&lt;article id="webslides"&gt;
-  <span class="code-comment">&lt;!-- Slide 1 --&gt;</span>
-  &lt;section&gt;
-    &lt;h1&gt;Design for trust&lt;/h1&gt;
-  &lt;/section&gt;
-  <span class="code-comment">&lt;!-- Slide 2 --&gt;</span>
-  &lt;section class="bg-primary"&gt;
-    &lt;div class="wrap"&gt;
-      &lt;h2&gt;.wrap = container (width: 90%)&lt;/h2&gt;
-    &lt;/div&gt;
-  &lt;/section&gt;
-&lt;/article&gt;
-</pre>
-              </div>
-              <!-- .end .column -->
-            </div>
-            <!-- .end .grid -->
-          </div>
-          <!-- .end .wrap -->
-        </section>
-        <section>
-          <div class="wrap">
-            <h2>Features</h2>
-            <ul class="flexblock features">
-              <li>
-                <div>
-                  <h2>
-                    <span>&rarr;</span>
-                    Simple Navigation
-                  </h2>
-                  with arrow keys, presenter...
-                </div>
-              </li>
-              <li>
-                <div>
-                  <h2>
-                    <svg class="fa-link">
-                      <use xlink:href="#fa-link"></use>
-                    </svg>
-                    Permalinks
-                  </h2>
-                  Go to a specific slide.
-                </div>
-              </li>
-              <li>
-                <div>
-                  <h2>
-                    <svg class="fa-clock-o">
-                      <use xlink:href="#fa-clock-o"></use>
-                    </svg>
-                    Slide Counter
-                  </h2>
-                  Current/Total number.
-                </div>
-              </li>
-              <li>
-                <div>
-                  <h2>
-                    <span>40<sup>+</sup></span>
-                    Beautiful Components
-                  </h2>
-                  Covers, cards, quotes...
-                </div>
-              </li>
-              <li>
-                <div>
-                  <h2>
-                    <svg class="fa-text-height">
-                      <use xlink:href="#fa-text-height"></use>
-                    </svg>
-                    Vertical Rhythm
-                  </h2>
-                  Use multiples of 8.
-                </div>
-              </li>
-              <li>
-                <div>
-                  <h2>
-                    <span>500<sup>+</sup></span>
-                    SVG Icons
-                  </h2>
-                  Font Awesome Kit.
-                </div>
-              </li>
-            </ul>
-          </div>
-        </section>
-        <section>
-          <div class="wrap">
-            <h2><strong>WebSlides Demos</strong></h2>
-            <p>Contribute on <a href="https://github.com/webslides/webslides" title="Contribute on Github">Github</a>. <span class="alignright"><a href="demos/index.html" title="WebSlides Demos">View all &rsaquo;</a></span></p>
-            <ul class="flexblock gallery">
-              <li>
-                <a href="demos/why-webslides.html" title="Why WebSlides?">
-                  <figure>
-                    <img alt="Thumbnail Why WebSlides?" src="https://webslides.tv/static/images/demos-why.png">
-                    <figcaption>
-                      <h2>Why WebSlides?</h2>
-                    </figcaption>
-                  </figure>
-                </a>
-              </li>
-              <li>
-                <a href="demos/landings.html" title="Landings">
-                  <figure>
-                    <img alt="Thumbnail Landings" src="https://webslides.tv/static/images/demos-landings.png">
-                    <figcaption>
-                      <h2>Landings</h2>
-                    </figcaption>
-                  </figure>
-                </a>
-              </li>
-              <li>
-                <a href="demos/portfolios.html" title="Portfolios">
-                  <figure>
-                    <img alt="Thumbnail Portfolios" src="https://webslides.tv/static/images/demos-portfolios.png">
-                    <figcaption>
-                      <h2>Portfolios</h2>
-                    </figcaption>
-                  </figure>
-                </a>
-              </li>
-              <li>
-                <a href="demos/keynote.html" title="Apple Keynote">
-                  <figure>
-                    <img alt="Thumbnail Apple Keynote" src="https://webslides.tv/static/images/demos-apple.png">
-                    <figcaption>
-                      <h2>Apple Keynote</h2>
-                    </figcaption>
-                  </figure>
-                </a>
-              </li>
-            </ul>
-          </div>
-          <!-- .end .wrap -->
-        </section>
-        <section>
-          <div class="wrap">
-            <div class="grid vertical-align">
-              <div class="column">
-                <h4>
-                  <svg class="fa-life-ring">
-                    <use xlink:href="#fa-life-ring"></use>
-                  </svg>
-                  <strong>Guides</strong>
-                </h4>
-                <p>If you need help, here's just three tutorials. Just a basic knowledge of HTML is required:</p>
-                <ul class="description">
-                  <li><a href="demos/components.html" title="WebSlides Components">WebSlides Components</a>.</li>
-                  <li><a href="demos/classes.html" title="WebSlides Classes">WebSlides Classes</a>.</li>
-                  <li><a href="demos/media.html" title="WebSlides Media">WebSlides Media: images, videos...</a></li>
-                </ul>
-              </div>
-              <div class="column">
-                <figure><img class="aligncenter" src="static/images/setup.png" alt="WebSlides Files"></figure>
-              </div>
-              <div class="column">
-                <h4>
-                  <svg class="fa-cubes">
-                    <use xlink:href="#fa-cubes"></use>
-                  </svg>
-                  <strong>Built to expand</strong>
-                </h4>
-                <p>The best way to <strong>inspire with your content</strong> is to connect on a personal level:</p>
-                <ul class="description">
-                  <li>Background images: <a href="http://unsplash.com">Unsplash</a>.</li>
-                  <li>CSS animations: <a href="https://daneden.github.io/animate.css/">Animate.css</a>.</li>
-                  <li>Longforms: <a href="http://michalsnik.github.io/aos/"> Animate on scroll</a>.</li>
-                </ul>
-              </div>
-            </div>
-            <!--end .grid -->
-          </div>
-        </section>
-        <section class="aligncenter">
-          <!-- .wrap = container (width: 90%) -->
-          <div class="wrap">
-            <h2><strong>Ready to Start?</strong> </h2>
-            <p class="text-intro">Create your own presentation instantly. <br>120+ premium slides ready to use.</p>
-            <p>
-              <a href="https://webslides.tv/webslides-latest.zip" class="button" title="Download WebSlides">
-                <svg class="fa-cloud-download">
-                  <use xlink:href="#fa-cloud-download"></use>
-                </svg>
-                Free Download
-              </a>
-              <span class="try">
-                <a href="https://www.paypal.me/jlantunez/8" title="Thanks :)">
-                  <svg class="fa-paypal">
-                    <use xlink:href="#fa-paypal"></use>
-                  </svg>
-                  Pay what you want.
-                </a>
-              </span>
             </p>
           </div>
-          <!-- .end .wrap -->
         </section>
-        <section class="slide-bottom">
-          <div class="wrap">
-            <div class="content-right text-serif">
-              <h2>
-                <strong>Thanks.</strong>
-                <a target="_blank" title="Share on Twitter" href="https://twitter.com/intent/tweet?text=Finally,%20everything%20you%20need%20to%20make%20HTML%20presentations%20in%20a%20fast/beautiful%20way.%20@WebSlides%20=%20Good%20karma%20&mdash;%20https://webslides.tv">
-                  <svg class="fa-twitter">
-                    <use xlink:href="#fa-twitter"></use>
-                  </svg>
-                </a>
-              </h2>
-              <p>People share content that makes them feel inspired. WebSlides is a very effective way to engage young audiences, customers, and teams.</p> 
-              <p>Best,<br> <a href="https://twitter.com/jlantunez">@jlantunez</a>, <a href="https://twitter.com/belelros">@belelros</a>, and <a href="https://twitter.com/luissacristan">@luissacristan</a>.</p>
-            </div>
-            <!-- .end .content-right -->
+
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              What TDD gets you
+            </h2>
+            <h3>Being an even better developer</h3>
+            <ul>
+              <li>
+                In my experience, the very best coders have been TDDers.
+              </li>
+              <li>
+                TDD requires an analytical mindset and certain degree of discipline, qualities that are not bad to have.
+              </li>
+              <li>
+                Some of them can also be a little snooty, but so can Ruby devs, and we still love them... Well, most of them.
+              </li>
+            </ul>
           </div>
-          <!-- .end .wrap -->
         </section>
+
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              Basically, testing takes you from
+            </h2>
+            <img src="static/images/rupaul-dontfuckitup.gif" class="center-block"/>
+          </div>
+        </section>
+
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              to
+            </h2>
+            <img src="static/images/rupaul-fuckingmakeithappen.gif" class="center-block"/>
+          </div>
+        </section>
+
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              What kinds of testing are there?
+            </h2>
+            <h3>Main categories:</h3>
+            <ul>
+              <li>
+                Unit tests
+              </li>
+              <li>
+                Integration tests
+              </li>
+              <li>
+                User acceptance tests / end-to-end tests
+              </li>
+            </ul>
+          </div>
+        </section>
+
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              Testing philosophies: Proportions
+            </h2>
+            <h3>&ldquo;Pyramid&rdquo;</h3>
+            <ul>
+              <li>
+                The traditional formula (doesn't make it the right one, though)
+              </li>
+            </ul>
+
+            PUT A PICTURE HERE OF THE TESTING PYRAMID
+          </div>
+        </section>
+
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              Testing philosophies: Proportions
+            </h2>
+            <h3>&ldquo;House&rdquo;</h3>
+            <ul>
+              <li>
+                My fav
+              </li>
+            </ul>
+
+            PUT A PICTURE HERE OF THE TESTING HOUSE
+          </div>
+        </section>
+
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              Testing philosophies: <br />Test Coverage Metrics
+            </h2>
+            <ul>
+              <li>
+                This is the traditional metric for test success: You measure how many lines of
+                your code is tested by your test suite (there are tools for this).
+              </li>
+              <li>
+                Just like trying to meet any metric for the sake meeting the metric,
+                this has drawbacks.
+              </li>
+              <li>
+                This can cause extra work or extra code for no tangible benefit.
+                And just like with any metric, you can game the system.
+              </li>
+              <li>
+                My advice: Make sure you're testing what your users will use.
+                If your code base is tight, then you will have a high test coverage percentage as a matter of course.
+              </li>
+            </ul>
+          </div>
+
+          FIND / CREATE EXAMPLE WHERE UR NOT TESTING ANYTHING USEFUL
+        </section>
+
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              Testing philosophies: <br /> Behavior-driven development (BDD)
+            </h2>
+            <ul>
+              <li>
+
+              </li>
+              <li>
+
+              </li>
+              <li>
+
+              </li>
+              <li>
+
+              </li>
+            </ul>
+          </div>
+        </section>
+
 
       </article>
       <!-- end article -->

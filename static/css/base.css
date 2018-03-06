@@ -57,13 +57,10 @@
 0. CSS Reset & Normalize
 =========================================== */
 
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { border: 0; font-size: 100%; font: inherit; vertical-align: baseline; margin: 0; padding: 0 }
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { border: 0; font-size: 100%; font: inherit; vertical-align: baseline; margin: 0; padding: 0; line-height: 1.0;}
 
 article, aside, details, figcaption, figure, footer, header, main, menu, nav, section, summary {
   display: block;
-}
-body {
-  line-height: 1;
 }
 
 blockquote,
@@ -192,18 +189,6 @@ p + hr {
   margin-bottom: 4rem;
 }
 
-/*
-hr::after {
-    position: relative;
-    top: -2.4rem;
-    font-size: 2.4rem;
-    content: "\00A7";
-    display: inline-block;
-    border-radius: 50%;
-    width: 4.8rem;
-    height: 4.8rem;
-    line-height: 4.8rem;
-}*/
 dfn,
 cite,
 em,
@@ -706,7 +691,7 @@ footer,
   height: 100%;
   margin: 0;
 }
-/* -- Responsive background video 
+/* -- Responsive background video
 https://fvsch.com/code/video-background/ -- */
 
 .fullscreen > .embed {
@@ -724,18 +709,18 @@ https://fvsch.com/code/video-background/ -- */
   .fullscreen > .embed > iframe,
   .fullscreen > .embed > object,
   .fullscreen > .embed > embed,
-  .fullscreen > .embed > video { 
-    height: 300%; 
-    top: -100%; 
+  .fullscreen > .embed > video {
+    height: 300%;
+    top: -100%;
   }
 }
 @media (max-aspect-ratio: 16/9) {
   .fullscreen > .embed > iframe,
   .fullscreen > .embed > object,
   .fullscreen > .embed > embed,
-  .fullscreen > .embed > video { 
-    width: 300%; 
-    left: -100%; 
+  .fullscreen > .embed > video {
+    width: 300%;
+    left: -100%;
   }
 }
 /* 2. If supporting object-fit, overriding (1): */
@@ -744,9 +729,9 @@ https://fvsch.com/code/video-background/ -- */
   .fullscreen > .embed > object,
   .fullscreen > .embed > embed,
   .fullscreen > .embed > video {
-    top: 0; 
+    top: 0;
     left: 0;
-    width: 100%; 
+    width: 100%;
     height: 100%;
     object-fit: cover;
   }
@@ -868,7 +853,7 @@ Auto-fill & Equal height === */
 
 html,
 body {
-  line-height: 1;
+  line-height: 1.0;
   /*Sometimes fonts don't display optimally on all devices*/
   /*-moz-osx-font-smoothing: grayscale;*/
   /*-webkit-font-smoothing: antialiased;*/
@@ -890,7 +875,6 @@ textarea {
   font-size: 1.8rem;
 }
 
-p,
 li,
 dt,
 dd,
@@ -939,13 +923,21 @@ ul.description li,.column ul li {list-style: none;margin-left: 0;}
 }
 
 h1 svg,
-h2 svg, h3 svg, h4 svg {
+h2 svg,
+h3 svg,
+h4 svg {
   margin-top: -.8rem;
 }
-.text-intro svg,.text-quote p svg,.wall p svg,.try svg {
+
+.text-intro svg,
+.text-quote p svg,
+.wall p svg,
+.try svg {
   margin-top: -.4rem;
 }
-.flexblock li h2 svg,.flexblock li h3 svg {margin-top: 0;
+
+.flexblock li h2 svg,
+.flexblock li h3 svg {margin-top: 0;
 }
 
 h1 {
@@ -3236,14 +3228,14 @@ button:disabled:hover {
 }
 
 /*=========================================
-15. Longform 
+15. Longform
 =========================================== */
 
 /* -- Posts = .wrap.longform -- */
 
 .longform {
-width: 72rem; 
-/* Why 72rem=720px? 
+width: 72rem;
+/* Why 72rem=720px?
 90-95 characters per line = better reading speed */
 }
 .longform .alignleft, .longform .alignright {
