@@ -145,7 +145,7 @@ video {
   vertical-align: baseline;
   margin: 0;
   padding: 0;
-  line-height: 1.0;
+  line-height: 1.2;
   font-weight: 300;
 }
 
@@ -633,7 +633,7 @@ pre {
   white-space: pre-wrap;
   word-wrap: break-word;
   text-align: left;
-  padding: 2.4rem;
+  padding: 0 2.4rem;
   overflow: auto;
   width: 100%;
 }
@@ -648,6 +648,11 @@ code {
 
 pre code {
   padding: 0;
+}
+
+.hljs {
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
 
@@ -1938,7 +1943,7 @@ a#previous {
 
 @media (max-width:1024px) {
   #navigation {
-    background: url('../images/swipe.svg') no-repeat center top;
+    /*background: url('../images/swipe.svg') no-repeat center top;*/
     background-size: 4.8rem;
     -webkit-animation: fadeIn 6s;
     animation: fadeIn 6s;

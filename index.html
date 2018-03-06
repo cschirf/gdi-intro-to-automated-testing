@@ -136,7 +136,7 @@
             </h2>
             <ul>
               <li>
-                A computer that can run JavaScript and has Node and npm installed on it.
+                A computer and the internet.
               </li>
               <li>
                 A basic understanding of JavaScript, especially functions.
@@ -180,14 +180,14 @@
                 <li>
                   Kinds of testing, testing philosophies and approaches
                 </li>
-                <li>
+                <!-- <li>
                   Common criticisms/objections to automated testing
-                </li>
+                </li> -->
                 <li>
                   Practicum: Unit testing vanilla JS with Jasmine
                 </li>
                 <li>
-                  Best practices for each kind of testing
+                  Wrap Up: Testing considerations, best practices, reflections, and conclusions
                 </li>
               </ol>
             </p>
@@ -207,8 +207,10 @@
               code.
             </p>
             <p>
-              They can be very specific and only test a function or a part of a function, or they can be
-              <span class="keyword">coarse-grained</span> and test an actual <span class="keyword">end-to-end</span>              scenario.
+              They can be very specific and only test a function or a part of
+              a function (<span class="keyword">fine-grained</span>), or they can be
+              <span class="keyword">coarse-grained</span> and test an actual
+              <span class="keyword">end-to-end</span> scenario.
             </p>
             <p>
               The real power of any kind of automated test is that is <em>automated</em>&mdash; it&rsquo;s
@@ -270,7 +272,7 @@
 
 
         <section>
-          <div class="wrap size-70 aligncenter">
+          <div class="wrap size-70 aligncenter shrink">
             <h3>Confidence in refactoring/rewrites</h3>
             <ul>
               <li>
@@ -365,26 +367,27 @@
 
 
         <section>
-          <div class="wrap size-70 aligncenter">
+          <div class="wrap size-70 aligncenter shrink">
             <h3>Responsibility for code quality</h3>
             <ul>
               <li>
-                Our job is to solve problems, not write code.
+                Our job is to solve problems, not write code. If we don&rsquo;t
+                ensure the quality of our code, then we aren&rsquo;t solving the
+                problem, we are just writing code.
               </li>
               <li>
                 It&rsquo;s easy to throw problems onto someone else.
-              </li>
-              <li>
-                If you get used to doing that, it&rsquo;s easy to believe that code quality issues aren&rsquo;t your
+                If you get used to doing that, it&rsquo;s easy to believe that
+                code quality issues aren&rsquo;t your
                 problem (spoiler: they are).
               </li>
               <li>
-                It&rsquo;s also easy to get sloppy because you expect someone else will find and/or fix your bugs for
-                you.
+                It&rsquo;s also easy to get sloppy because you expect someone
+                else will find and/or fix your bugs for you.
               </li>
               <li>
-                This depends on your team, but ideally, this responsibility is shared, either amongst your team or a
-                subset of your team.
+                This depends on your team, but ideally, this responsibility is
+                shared, either amongst your team or a subset of your team.
                 <!-- prevent single point of failure, personal responsbility has issues -->
               </li>
             </ul>
@@ -404,6 +407,7 @@
                 a better problem solver. After all, what is programming but the application of logic?
                 <&#47;philosophy>
               </li>
+              <!-- test cases as solidification of critical thought process -->
             </ul>
           </div>
         </section>
@@ -429,6 +433,9 @@
             </p>
             <p>
               Tests are <strong>first-class citizens</strong>, not an afterthought.
+            </p>
+            <p>
+              The problem you are given has been solved when all the tests pass.
             </p>
             <p>
               Mantra: Red, Green, Refactor
@@ -474,11 +481,13 @@
                 We don&rsquo;t always get clear-cut requirements.
               </li>
               <li>
-                When you write the test first, you have to know upfront exactly what's being asked of you, and that's
+                When you write the test first, you have to know upfront exactly
+                what's being asked of you, and that's
                 ideal.
               </li>
               <li>
-                If you can&rsquo;t write the test, you don&rsquo;t have enough information to write the code.
+                If you can&rsquo;t write the test, you don&rsquo;t have enough
+                information to write the code.
               </li>
               <li>
                 You also know <em>where</em> you&rsquo;re missing clarity. You can take that information
@@ -497,7 +506,8 @@
             <p>
               <br />Original requirement:
               <br />
-              <br /> Create a user with the information in the create user form if it doesn&rsquo;t already
+              <br /> Create a user with the information in the create user form
+              if it doesn&rsquo;t already
               exist.
             </p>
           </div>
@@ -528,14 +538,17 @@
             <h3>Only write what you need</h3>
             <ul>
               <li>
-                Related to clarifying the requirements is the idea of gold-plating. If we don&rsquo;t really know what's
-                expected, we are likely to add extra code that doesn&rsquo;t really do anything.
+                Related to clarifying the requirements is the idea of
+                <span class="keyword">gold-plating</span>.
+                If we don&rsquo;t really know what&rsquo;s expected, we are
+                likely to add extra code that doesn&rsquo;t really do anything.
               </li>
               <li>
                 But extra code means extra complexity and more stuff we have to maintain.
               </li>
               <li>
-                Because you have a gauge to determine when you&rsquo;re done (the tests), you only write as much as you
+                Because you have a gauge to determine when you&rsquo;re done
+                (the tests), you only write as much as you
                 need to to get the tests to pass. No more, no less.
               </li>
             </ul>
@@ -632,9 +645,13 @@
             </h4>
             <p>
               Testing is kind of like Agile&mdash; everyone does it a little bit differently.
-              <br/><br/>
+              <br><br>
               I&rsquo;m going to give my take on how to
-              break down the testing stack, but you might run into other terminology.
+              break down the testing stack, but you might hear this terminology used a little differently.
+              <!--
+                Also, because testing isn't really taught & is often taken less seriously,
+                some people might mis-use some terms.
+              -->
             </p>
           </div>
         </section>
@@ -775,7 +792,7 @@
 
 
         <section>
-          <div class="wrap size-70 aligncenter">
+          <div class="wrap size-70 aligncenter shrink">
             <h2>
               Test Coverage Metrics
             </h2>
@@ -792,14 +809,14 @@
                 game the system.
               </li>
               <li>
-                My advice: Make sure you&rsquo;re testing what your users will use. If your code base is tight, then
+                My advice: If you care if it works, test it. If your code base is tight, then
                 you will have a high test coverage percentage as a matter of course.
               </li>
             </ul>
           </div>
           <!-- Can use test coverage metric as a way to see where to add test coverage -->
           <!-- Many people have been bitten by test coverage metrics and become gun-shy or outright hostile -->
-          FIND / CREATE EXAMPLE WHERE UR NOT TESTING ANYTHING USEFUL
+          <!-- e.g. testing an empty catch statement -->
         </section>
 
 
@@ -867,7 +884,7 @@ Scenario: Checkout book
 
 Given the library is open
   And the patron's library card is valid
-When the patron tries to check out book
+When the patron checks out book
 Then ensure the book is added to the patron's account
   And ensure the patron receives a receipt
   And ensure the patron's library card is returned

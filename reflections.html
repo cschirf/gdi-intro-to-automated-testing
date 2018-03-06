@@ -1,0 +1,711 @@
+<!doctype html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- SEO -->
+    <title>GDI: Intro to Testing with application in JS/Jasmine</title>
+    <meta name="description" content="Girl Develop It (GDI): Intro to Testing with application in JS/Jasmine">
+
+    <!-- URL CANONICAL -->
+    <!-- <link rel="canonical" href="http://your-url.com/"> -->
+
+    <link rel="stylesheet" type='text/css' media='all' href="static/css/base.css">
+    <link rel="stylesheet" type='text/css' media='all' href="static/css/colors.css">
+    <link rel="stylesheet" type='text/css' media='all' href="static/css/svg-icons.css">
+    <link rel="stylesheet" type='text/css' media='all' href="static/css/lib/highlight-themes/monokai.css">
+
+    <!-- FAVICONS -->
+    <!-- <link rel="shortcut icon" sizes="16x16" href="static/images/favicons/favicon.png"> -->
+    <!-- <link rel="shortcut icon" sizes="32x32" href="static/images/favicons/favicon-32.png">
+    <link rel="apple-touch-icon icon" sizes="76x76" href="static/images/favicons/favicon-76.png">
+    <link rel="apple-touch-icon icon" sizes="120x120" href="static/images/favicons/favicon-120.png">
+    <link rel="apple-touch-icon icon" sizes="152x152" href="static/images/favicons/favicon-152.png">
+    <link rel="apple-touch-icon icon" sizes="180x180" href="static/images/favicons/favicon-180.png">
+    <link rel="apple-touch-icon icon" sizes="192x192" href="static/images/favicons/favicon-192.png"> -->
+
+    <!-- Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#333333">
+
+  </head>
+
+  <body>
+
+    <main role="main">
+      <article id="webslides" class="vertical">
+        <section>
+          <div class="wrap aligncenter">
+            <img src="static/images/logo/circle-gdi-logo.png" style="padding-bottom: 30px;" />
+            <h1><strong>Considerations and Conclusions</strong></h1>
+            <p class="text-intro center">
+              <i>
+                with resource list
+              </i>
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              Reflections
+            </h2>
+            <ul>
+              <li>
+                What worked well? What didn&rsquo;t?
+              </li>
+              <li>
+                Wha patterns did you see?
+              </li>
+              <li>
+                Where there any issues or frustrations you commonly ran into?
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter shrink">
+            <h2>Testing Principles</h2>
+            <ul>
+              <li>
+                Reliability: If your test is not reliable, then it is not giving
+                you any useful information. It is dead weight.
+              </li>
+              <li>
+                Isolation: Think of your test cases like mini science experiments.
+                How do you run a science experiment? You limit your variables.
+              </li>
+              <li>
+                Readability: When the test fails, do I know why?
+              </li>
+              <li>
+                1-to-1: A single test should test a single thing.
+                Overloaded tests are often brittle and it&rsquo;s difficult to get
+                useful information out of them. There is a high cognitive load to
+                sift through all the things being tested to find the one reason the test failed.
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>Common testing issues</h2>
+            <ul>
+              <li>
+                Brittleness
+              </li>
+              <li>
+                Flakiness
+              </li>
+              <li>
+                Single change requires updating a lot of tests
+              </li>
+              <li>
+                Tests require a lot of setup/state
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>Brittleness</h2>
+            <p>
+              A test may be said to be <span class="keyword">brittle</span> when
+              you have to make a lot of updates or frequent updates even when making
+              small changes to the code under test.
+            </p>
+            <p>
+              Brittleness can mean that you are not properly abstracting your
+              tests or that you are testing too many implementation details.
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>Brittleness</h2>
+            <p>
+              For example, if you are testing a webpage, do you necessarily need to test
+              that all the right CSS classses were added to an element? Or is it sufficient
+              to test that the right DOM elements exist and are visible?
+            </p>
+            <p>
+              If you are testing a function, do you necessarily care which helper functions
+              it calls, or is it sufficient that you get the right result or side-effect?
+            </p>
+            <p>
+              Maybe you do care about the details. But you should expect that
+              this will result in a test suite that requires more care.
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>Test Story</h2>
+            <p>
+              I was once at a TX JS conference, during which a developer from Stripe
+              discussed how they had componentized their UI styles. This was a major
+              re-work, but it cut down their CSS definitions considerably.
+              More importantly, created a unified look-and-feel across their app
+              and made it easier to override certain styles for white-labelling.
+            </p>
+            <p>
+              The way they tested new widgets was to check that those widgets used certain
+              classes. Although this would generally be considered an approach to avoid,
+              Stripe used it successfully to ensure that widgets were using the new,
+              componentized style library.
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>Brittleness</h2>
+            <p>
+              Some testing approaches or frameworks have a certain degree of
+              inherent brittleness in them. This is especially true for end-to-end
+              tests or tests that have to touch multiple systems.
+            </p>
+            <p>
+              <em>That does not mean that these tests should be avoided&mdash;
+              many times they provide valuable information about the overall
+              health of a system&mdash;</em> but you should understand that they come
+              at a price. You should be able to weigh the benefits and costs of
+              these approaches and frameworks.
+            </p>
+            <p>
+              One of the other costs of end-to-end or multi-system tests is
+              <span class="keyword">flakiness</span>.
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter shrink">
+            <h2>Side note on Selenium</h2>
+            <p>
+              Selenium can be a powerful testing tool, but browsers are a crazy
+              place full of events and asynchronicity.
+            </p>
+            <p>
+              There is a whole set of best practices for Selenium that we won&rsquo;t
+              get into here, but one common and avoidable issue that crops up
+              in Selenium test suites is <span class="keyword">improper abstraction</span>.
+            </p>
+            <p>
+              Separating <span class="keyword">page objects</span> that handle
+              interactions with the actual DOM elements from the main test cases
+              will go a long way to more maintainable Selenium suites.
+            </p>
+            <p>
+              (The other common issue is not waiting for elements to be visible,
+              clickable, or interactable before trying to view, click, or
+              interact with them. Remember: you&rsquo;re in a browser, and
+              it&rsquo;s a jungle out there.)
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              Flakiness
+            </h2>
+            <p>
+              A test may be said to be <span class="keyword">flakey</span> when
+              it fails randomly (<span class="keyword">rando-fails</span>) or needs to be
+              re-run another time or two for it to pass.
+            </p>
+            <p>
+              Flakey tests are a common reason developers dislike or distrust testing.
+              This is especially true when the the test sometimes fails even though
+              no remotely related code has been changed.
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <p class="center">
+              <em>
+                Flakey tests are a Big Deal. Nip them in the bud.
+              </em>
+            </p>
+            <img src="static/images/dalek-exterminate-flakiness.png" />
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              Common reasons for flakiness
+            </h2>
+            <h3>Left-over State</h3>
+            <p>
+              One test case leaves behind state that messes up other tests.
+              One indicator: if a test passes when run by itself, but fails
+              when run as part of the test file or suite.
+            </p>
+            <p>
+              The Fix: Figure out which test is leaving behind state and update it
+              to clean up what it created in the test.
+            </p>
+            <p>
+              Many testing libraries allow
+              you to specify <span class="mono">afterEach</span> and
+              <span class="mono">afterAll</span> functions, where you can do
+              any kind of cleanup you need to do. These are also called
+              <span class="keyword">tear down</span> functions. This is the ideal place to do
+              this cleanup because if a test fails or is interrupted, it may not
+              clean its state.
+            </p>
+          </div>
+        </section>
+
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              Common reasons for flakiness
+            </h2>
+            <h3>Relying on outside systems</h3>
+            <p>
+              Any time you have to call out to a system that is not part of the
+              test suite (especially if it is over the wire), you are opening yourself
+              up to a certain level of flakiness (depending on the system and your approach).
+            </p>
+            <p>
+              You have now coupled your test to that other system,
+              and if it&rsquo;s having issues or the internet is bad or the planets are misaligned,
+              you will have a failing test and (probably) a failing build.
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              Common reasons for flakiness
+            </h2>
+            <h3>Relying on outside systems</h3>
+            <p>
+              The first question you should ask yourself is if you even need the test you
+              are writing.
+            </p>
+            <p>
+              For example, I once ran into a test that was checking if
+              a service class could connect to AWS. Because the service class was using
+              AWS&rsquo;s library, they were essentially testing if the AWS client jar worked.
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter shrink">
+            <h2>
+              Common reasons for flakiness
+            </h2>
+            <h3>Relying on outside systems</h3>
+            <p>
+              Otherwise, the most common approach is to
+              <span class="keyword">mock</span> the service or system that the code
+              under test will be hitting. (And you may want to
+              have both mocked and unmocked tests for a connected service.)
+            </p>
+            <p>
+              This means, of course, you will have to have written your code in a way
+              that allows for this level of abstraction (e.g. a class takes in a
+              connection as input to its constructor instead of building the connection itself);
+              or you will need the ability to override the connection information
+              at some level of the test suite.
+            </p>
+            <p>
+              The benefits:
+              <ul>
+                <li>
+                  You have total control over what gets returned so you can be precise in your testing.
+                </li>
+                <li>
+                  You are no longer relying on another system! High five!
+                </li>
+              </ul>
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter" style="font-size: 80%">
+            <h2>
+              Common reasons for flakiness
+            </h2>
+            <h3>Relying on outside systems</h3>
+            <p>
+              Sometimes you want to (or have to) hit the real deal. One way to
+              minimize the amount of flakiness is to have an instance of that system
+              or service on the box that is running the tests
+              (e.g. local instance or instance on a remote test box).
+            </p>
+            <p>
+              This avoids a whole class of connectivity issues.
+            </p>
+            <p>
+              This approach is common with tests that touch databases.
+            </p>
+            <p>
+              Another potential approach to databases is to use something like h2,
+              which creates a database in memory to run the test suite against.
+              Naturally, there are pros and cons to this approach.
+              Test suites of this nature often take much longer
+              to run and the test box will need to be beefier.
+              It is also possible (probable?) that you will not catch database-specific bugs (oh, MySQL).
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter shrink">
+            <h2>
+              Common reasons for flakiness
+            </h2>
+            <h3>Rounding / Deltas</h3>
+            <p>
+              There are occassions where a successful result is anything within
+              a certain acceptable range (e.g. latitude and longitude coordinates,
+              fuzzy numerical calculations, timestamps).
+            </p>
+            <p>
+              In these cases, you <s>may</s> will probably see random test failures
+              because the original test is looking for a specific value.
+            </p>
+            <p>
+              Some testing libraries have helper functions to check if a
+              value exists in a given range (you can also grab helper libraries like Hamcrest).
+              If you don&rsquo;t have that out of the box, inbd: you can roll
+              your own with greater than and less than checks.
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              Common reasons for flakiness
+            </h2>
+            <h3>Rounding / Deltas: Example*</h3>
+<pre>
+<code class="javascript">
+var actualCoordiates = mapMaker.giveMeCoordinates(testInput);
+expect(actualCoordinates.latitude).toBeGreaterThanOrEqualTo(30.26629999);
+expect(actualCoordinates.latitude).toBeLessThanOrEqualTo(30.26639999);
+
+var actualCreatedTimestamp = shazzam.makeMeAnObject();
+expect(actualCreatedTimestamp).toBeGreaterThanOrEqualTo(aMinuteAgo);
+expect(actualCreatedTimestamp).toBeLessThanOrEqualTo(now);
+</code>
+</pre>
+<p>
+  <i>
+    * This is definitely pseudocode.
+  </i>
+</p>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter shrink">
+            <h2>
+              Some jargon
+            </h2>
+            <p>
+              You may hear the term <span class="keyword">syntactic sugar</span>.
+            </p>
+            <p>
+              If you&rsquo;re like me and this phrase made no sense to you the first
+              time you heard it: syntactic sugar refers to all the nice helper
+              functionality that makes your tests easier to write and read.
+            </p>
+            <p>
+              E.g., Hamcrest is a library you can use to sprinkle some
+              syntactic sugar on your JUnit tests.
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              Less common reasons for flakiness
+            </h2>
+            <h3>When it is actually a race condition</h3>
+            <p>
+              Sometimes a flakey test is telling you something useful about the code under test.
+              It is possible that it has a race condition in it.
+            </p>
+            <p>
+              You shouldn&rsquo;t start with that assumption, but it&rsquo;s a possibility.
+            </p>
+            <p>
+              These are nasty to track down and not always easy to fix, so if this
+              ends up being your issue, we wish you the best of luck.
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              Less common reasons for flakiness
+            </h2>
+            <h3>Non-determinism in tests</h3>
+            <p>
+              Any time you have randomness or non-determinism in your test suite,
+              you are opening yourself up to flakiness.
+            </p>
+            <p>
+              For most purposes, a set of well-chosen test data will cover all
+              necessary cases, and there is no need for random data.
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              Not-so-common reasons for flakiness
+            </h2>
+            <h3>Non-determinism in code under test</h3>
+            <p>
+              There are very rare occassions where you are trying to test something
+              that is inherently non-deterministic (e.g. a machine learning algorithm).
+            </p>
+            <p>
+              On these very rare occassions, you might consider other approaches to testing.
+              For example: running the test multiple times, aggregating the results,
+              and looking for a value in a certain range.
+            </p>
+            <p>
+              It is also very possible that these algorithms might need a human being to look
+              at the results.
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter shrink">
+            <h2>
+              A single change requires a lot of test updates
+            </h2>
+            <p>
+              This is usually a sign of poor test isolation or too many tests.
+            </p>
+            <p>
+              Ideally, each test should test one thing.
+            </p>
+            <p>
+              The best thing you can do in this case is to take an inventory
+              of the test cases you have had to change and see if there are
+              ways of paring them down.
+            </p>
+            <p>
+              In your everyday development cycle, when you are updating and
+              especially if you are removing functionality, see if there are any
+              test cases that no longer make sense given your changes.
+              Regular test pruning is good for the overall health of your test suite.
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter shrink">
+            <h2>
+              A single change requires many updates to test setup
+            </h2>
+            <p>
+              You might consider abstracting the setup out into a
+              <span class="mono">beforeEach</span> or
+              <span class="mono">beforeAll</span> call. These are also called
+              <span class="keyword">setup</span> functions.
+            </p>
+            <p>
+              This is common with creating objects that require many dependencies.
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              Example of using beforeEach
+            </h2>
+<pre>
+<code class="javascript">
+var myObj;
+
+beforeEach(function() {
+  var dependency1 = theWayToGetDep1();
+  var dependency2 = theWayToGetDep2();
+  ...
+
+  myObj = new MyClass(dependency1, dependency2, ...);
+});
+
+it('should do something', function() {
+  expect(myObj.whatever()).toBe(something);
+});
+
+</code>
+</pre>
+<p>
+  <i>
+    * This is also definitely pseudocode.
+  </i>
+</p>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter shrink">
+            <h2>
+              Tests need a lot of setup
+            </h2>
+            <p>
+              The other depressingly common reason why tests might need a lot of setup
+              is that they were written in a way unfriendly to testing.
+            </p>
+            <p>
+              This can be indicative of other problems, but the best way to avoid
+              this issue is to <em>write the tests before the code</em>.
+            </p>
+            <p>
+              For example, I once worked in an Angular code base where almost all of the
+              business logic was embedded in the controllers. That meant that even if you
+              wanted to test a small function, you needed to set up a full instance of the
+              controller with all of its dependencies and requisite state. The task was
+              so burdensome (and in some cases downright impossible) that 90% of that
+              code base was never covered by automated tests.
+            </p>
+            <p>
+              Heavy controllers is an anti-pattern.
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              Best Practices
+            </h2>
+            <ul>
+              <li>
+                Use descriptive test names
+              </li>
+              <li>
+                Isolate state
+              </li>
+              <li>
+                Use appropriate abstractions
+              </li>
+              <li>
+                Use set up and tear down functions when appropriate.
+              </li>
+              <li>
+                Ignore implementation details if you can
+              </li>
+              <li>
+                Mock connected services when possible
+              </li>
+              <li>
+                Write your tests first to ensure code testability
+              </li>
+            </ul>
+          </div>
+        </section>
+
+
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h1>Q &amp; A</h1>
+          </div>
+        </section>
+
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              Resource
+            </h2>
+            <ul>
+              <li>
+                <a href="https://jasmine.github.io/2.0/introduction.html">
+                  Jasmine reference
+                </a>
+              </li>
+              <li>
+                <a href="https://stackoverflow.com/questions/22413009/jasmine-javascript-testing-tobe-vs-toequal">
+                  SO on Jasmine toBe v toEqual
+                </a>
+              </li>
+              <li>
+                <a href="https://dannorth.net/introducing-bdd/">
+                  Dan North&rsquo;s article on BDD
+                </a>
+              </li>
+              <li>
+                <a href="https://martinfowler.com/bliki/GivenWhenThen.html">
+                  Fowler on Given/When/Then
+                </a>
+              </li>
+              <li>
+                <a href="https://martinfowler.com/bliki/SpecificationByExample.html">
+                  Fowler on Specification by Example
+                </a>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+
+
+        <!-- COPY ME -->
+        <section>
+          <div class="wrap size-70 aligncenter">
+          </div>
+        </section>
+
+      </article>
+      <!-- end article -->
+    </main>
+    <!-- end main -->
+
+    <!-- A global footer
+
+     <footer role="contentinfo">
+      <div class="wrap">
+        <p>An <a href="https://github.com/webslides/webslides">open source solution</a>, by <a href="https://twitter.com/webslides">@webslides</a>.</p>
+      </div>
+    </footer>  -->
+
+    <!-- Required -->
+    <script src="static/js/webslides.js"></script>
+    <script src="static/js/lib/highlight.pack.js"></script>
+    <script>
+      window.ws = new WebSlides();
+      console.log('hljs: ', hljs);
+      console.log('hljs.initHighlightingOnLoad: ', hljs.initHighlightingOnLoad);
+      hljs.initHighlightingOnLoad();
+
+    </script>
+
+    <script defer src="static/js/svg-icons.js"></script>
+
+  </body>
+
+</html>

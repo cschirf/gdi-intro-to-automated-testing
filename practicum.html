@@ -1,0 +1,727 @@
+<!doctype html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- SEO -->
+    <title>GDI: Intro to Testing with application in JS/Jasmine</title>
+    <meta name="description" content="Girl Develop It (GDI): Intro to Testing with application in JS/Jasmine">
+
+    <!-- URL CANONICAL -->
+    <!-- <link rel="canonical" href="http://your-url.com/"> -->
+
+    <link rel="stylesheet" type='text/css' media='all' href="static/css/base.css">
+    <link rel="stylesheet" type='text/css' media='all' href="static/css/colors.css">
+    <link rel="stylesheet" type='text/css' media='all' href="static/css/svg-icons.css">
+    <link rel="stylesheet" type='text/css' media='all' href="static/css/lib/highlight-themes/monokai.css">
+
+    <!-- FAVICONS -->
+    <!-- <link rel="shortcut icon" sizes="16x16" href="static/images/favicons/favicon.png"> -->
+    <!-- <link rel="shortcut icon" sizes="32x32" href="static/images/favicons/favicon-32.png">
+    <link rel="apple-touch-icon icon" sizes="76x76" href="static/images/favicons/favicon-76.png">
+    <link rel="apple-touch-icon icon" sizes="120x120" href="static/images/favicons/favicon-120.png">
+    <link rel="apple-touch-icon icon" sizes="152x152" href="static/images/favicons/favicon-152.png">
+    <link rel="apple-touch-icon icon" sizes="180x180" href="static/images/favicons/favicon-180.png">
+    <link rel="apple-touch-icon icon" sizes="192x192" href="static/images/favicons/favicon-192.png"> -->
+
+    <!-- Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#333333">
+
+  </head>
+
+  <body>
+
+    <main role="main">
+      <article id="webslides" class="vertical">
+        <section>
+          <div class="wrap aligncenter">
+            <img src="static/images/logo/circle-gdi-logo.png" style="padding-bottom: 30px;" />
+            <h1><strong>Testing Practicum in Jasmine</strong></h1>
+            <!-- <p class="text-intro center">
+              <i>
+                Intro to automated testing philosophies, uses, and techniques with application to JS testing in Jasmine
+              </i>
+            </p> -->
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              Game Plan
+            </h2>
+            <ul>
+              <li>
+                Getting our feet wet with some simple unit tests
+              </li>
+              <li>
+                More advanced unit testing using TDD approach
+              </li>
+              <li>
+                Introduction to mocks and spies
+              </li>
+              <li>
+                Testing considerations, best practices, reflections, and conclusions
+              </li>
+              <li>
+                Q &amp; A
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              Let&rsquo;s Develop It!
+            </h2>
+            <p>
+              We already have a JSBin set up to use Jasmine. Use this link to get to it:
+            </p>
+            <p>
+              <a href="http://jsbin.com/loxenukuvo/edit?html,js,output">
+                http://jsbin.com/loxenukuvo/edit?html,js,output
+              </a>
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <p>
+              Keep this page handy for reference as we work through this practicum.
+            </p>
+            <p>
+              <a href="https://jasmine.github.io/2.0/introduction.html">
+                https://jasmine.github.io/2.0/introduction.html
+              </a>
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              Before we begin
+            </h2>
+            <p>
+              Jasmine is a BDD (behavior-driven development) testing framework.
+              The language it uses reflects this approach.
+            </p>
+            <p>
+              What we will be writing are <span class="keyword">unit tests</span>.
+            </p>
+            <p>
+              Because we&rsquo;ll be treating the <span class="keyword">code under test</span>
+              like a <span class="keyword">black box</span>, these tests might
+              also be labelled <span class="keyword">functional tests</span>.
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              Test structure of Jasmine
+            </h2>
+            <pre><code class="javascript">
+describe('the thing you are testing', function() {
+  it('should do something', function() {
+    // your test goes here
+  });
+
+  it('should not do something', function() {
+    // yet another awesome test goes here
+  });
+});
+  </code>
+  </pre>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              Our first test
+            </h2>
+            <!-- Let's lay down some code and then we'll talk about what's going on -->
+            <pre><code class="javascript">
+describe('a simple sanity check', function() {
+  it('true should be true', function() {
+    expect(true).toBe(true);
+  });
+});
+  </code>
+  </pre>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              Let&rsquo;s see what happens on failure
+            </h2>
+            <pre><code class="javascript">
+describe('a simple sanity check', function() {
+  it('should fail if reality is real', function() {
+    expect(true).toBe(false);
+  });
+});
+  </code>
+  </pre>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              Let&rsquo;s see what happens on failure
+            </h2>
+            <p>
+              <span class="mono">
+                a simple sanity chck should fail if reality is real.
+              </span>
+              <br /><br />
+              <span class="mono">
+                Error: Expected true to be false.
+              </span>
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              Let&rsquo;s kick it up a notch
+            </h2>
+            <pre>
+            <code class="javascript">
+var addMeUp = function(a, b) {
+  return a + b;
+}
+</code>
+</pre>
+            <p>
+              What kinds of test cases do we need?
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              Some possible test cases*
+            </h2>
+            <pre>
+            <code class="javascript">
+describe('addMeUp', function() {
+  it('should add two numbers correctly', function() {
+    expect(addMeUp(1,2)).toBe(3);
+    expect(addMeUp(100,-100)).toBe(0);
+    expect(addMeUp(-1,0)).toBe(-1);
+    expect(addMeUp(0,0)).toBe(0);
+  });
+});
+</code>
+</pre>
+      <p>
+        <i>
+          * For demo purposes only. We all know that JS addition works.
+          <br /><br />
+          Well, sort of&hellip;
+        </i>
+      </p>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              Oops. Numbers are hard.
+            </h2>
+            <pre>
+            <code class="javascript">
+describe('addMeUp', function() {
+  it('should add two numbers correctly', function() {
+    // 9007199254740991 == Number.MAX_SAFE_INTEGER
+    expect(9007199254740991, 1).toBe(9007199254740992);
+  });
+});
+</code>
+</pre>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              Hello, world!
+            </h2>
+            <p>
+              We&rsquo;re going to create a simple function that returns a string of
+              <span class="mono">
+                Hello, world!
+              </span>
+            </p>
+            <p>
+              Take a stab at writing the function and the test.
+            </p>
+            <p>
+              Call the function <span class="mono">hello</span> so we can add
+              to it later without refactoring the name.
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              Let&rsquo;s develop it!
+            </h2>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              An example implementation
+            </h2>
+            <pre>
+            <code class="javascript">
+var hello = function() {
+  return 'Hello, world!';
+}
+
+describe('hello', function() {
+  it('should return "Hello, world!"', function() {
+    expect(hello()).toBe('Hello, world!');
+  });
+});
+</code>
+</pre>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <p>
+              Update <span class="mono">hello</span> to take a name.
+            </p>
+            <p>
+              The function should now use that input to return
+              <span class="mono">Hello, [name]!</span>
+            </p>
+            <p>
+              Take a stab at updating the function and the test.
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              An example implementation
+            </h2>
+            <pre>
+            <code class="javascript">
+var hello = function(name) {
+  return 'Hello, ' + name + '!';
+}
+
+describe('hello', function() {
+  it('should greet someone by the given name', function() {
+    expect(hello('party parrot')).toBe('Hello, party parrot!');
+  });
+});
+</code>
+</pre>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h1>
+              Let&rsquo;s make this a little more BDD-like.
+            </h1>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              BDD me.
+            </h2>
+            <pre>
+            <code class="javascript">
+var hello = function(name) {
+  return 'Hello, ' + name + '!';
+}
+
+describe('hello', function() {
+  it('should greet someone by the given name', function() {
+    // given
+    var name = 'party parrot'
+
+    //when
+    var actualGreeting = hello(name);
+
+    //then
+    var expectedGreeting = 'Hello, party parrot!';
+    expect(actualGreeting).toBe(expectedGreeting);
+  });
+});
+</code>
+</pre>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <p>
+              That&rsquo;s pretty cool.
+            </p>
+            <p>
+              But what are some edge cases?
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              What happens when you try these cases?
+            </h2>
+            <pre>
+            <code class="javascript">
+hello(null)
+hello(undefined)
+hello({})
+hello([])
+hello(1)
+hello(NaN)
+hello(' ') // ooh, tricksy.
+</code>
+</pre>
+
+            <p>
+              <i>
+                Note: For the purposes of this class, assume that slapping
+                other developers is not an available option.
+              </i>
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              Let&rsquo;s develop it!
+            </h2>
+            <p>
+              Assume that if someone doesn&rsquo;t send in a valid string
+              (with a length of non-whitespace characters greater than 0),
+              that your function will just return <span class="mono">Hello!</span>
+            </p>
+            <p>
+              Take a stab at updating the function.
+            </p>
+            <p>
+              <i>
+                Hint: You should probably create new test case functions:
+                <span class="mono">it('should do the thing', function() {});</span>
+              </i>
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              Does your code pass these tests?
+            </h2>
+<pre>
+<code class="javascript" style="font-size: 0.8em;">
+describe('hello', function() {
+  var defaultExpectedGreeting = 'Hello!';
+
+  it('should greet someone by the given name', function() {
+    var name = 'party parrot';
+    var actualGreeting = hello(name);
+    var expectedGreeting = 'Hello, party parrot!';
+    expect(actualGreeting).toBe(expectedGreeting);
+  });
+
+  it('should handle whitespace only inputs', function() {
+    var name = '     ';
+    var actualGreeting = hello(name);
+    expect(actualGreeting).toBe(defaultExpectedGreeting);
+  });
+
+  it('should handle null inputs', function() {
+    var name = null;
+    var actualGreeting = hello(name);
+    expect(actualGreeting).toBe(defaultExpectedGreeting);
+  });
+
+   it('should handle undefined inputs', function() {
+    var name = undefined;
+    var actualGreeting = hello(name);
+    expect(actualGreeting).toBe(defaultExpectedGreeting);
+  });
+
+  it('should handle non-string inputs', function() {
+    expect(hello({})).toBe(defaultExpectedGreeting);
+    expect(hello([])).toBe(defaultExpectedGreeting);
+    expect(hello(1)).toBe(defaultExpectedGreeting);
+    expect(hello(NaN)).toBe(defaultExpectedGreeting);
+  });
+});
+</code>
+</pre>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <p>
+              If they do, <b>awesome</b>!
+            </p>
+            <p>
+              If they don&rsquo;t, welcome to programming!
+              Try again and may the coding gods be with you.
+            </p>
+
+            <!-- This is more for out in the wild. -->
+            <p>
+              <i>
+                Hint: If your first instinct is to change the tests&mdash; stop.
+                You need to update the <span class="keyword">code under test</span>.
+              </i>
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              Example implementation of code under test
+            </h2>
+<pre>
+<code class="javascript">
+var hello = function(name) {
+var isInputValid = name && typeof name === 'string' && name.trim().length > 0;
+
+  if (!isInputValid) {
+    return 'Hello!';
+  }
+
+  return 'Hello, ' + name + '!';
+}
+</code>
+</pre>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              Negating in Jasmine
+            </h2>
+<pre>
+<code class="javascript">
+describe('hello', function() {
+  it('should handle null inputs', function() {
+    var name = null;
+    var actualGreeting = hello(name);
+    expect(actualGreeting).not.toBe('Hello, null!');
+  });
+});
+</code>
+</pre>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              Testing objects
+            </h2>
+<pre>
+<code class="javascript">
+describe('objects', function() {
+  it('should equal each other if they have the same stuff in them', function() {
+    var obj1 = {
+      foo: 1,
+      bar: 'doritos'
+    };
+
+    var obj2 = {
+      foo: 1,
+      bar: 'doritos'
+    };
+
+    expect(obj1).toBe(obj2);
+  });
+});
+</code>
+</pre>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>Wait, what.</h2>
+              <p class="mono">
+                objects should equal each other if they have the same stuff in them.
+              </p>
+              <p class="mono">
+                Expected { foo : 1, bar : 'doritos' } to be { foo : 1, bar : 'doritos' }.
+              </p>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>Equality in Jasmine</h2>
+            <p>
+              The matcher <span class="mono">toBe</span> compares using the
+              <span class="mono">===</span> operator.
+            </p>
+            <p>
+              That doesn&rsquo;t work for objects, for example. In these cases,
+              you would use <span class="mono">toEqual</span>
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              Testing objects
+            </h2>
+<pre>
+<code class="javascript">
+describe('objects', function() {
+  it('should equal each other if they have the same stuff in them', function() {
+    var obj1 = {
+      foo: 1,
+      bar: 'doritos'
+    };
+
+    var obj2 = {
+      foo: 1,
+      bar: 'doritos'
+    };
+
+    expect(obj1).toEqual(obj2);
+  });
+});
+</code>
+</pre>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              Some other handy matchers in Jasmine
+            </h2>
+<pre>
+<code class="javascript">
+.toBeDefined()
+.toBeNull()
+.toBeTruthy()
+.toBeFalsy()
+.toContain()
+.toBeLessThan()
+.toBeGreaterThan()
+.toThrowError()
+</code>
+</pre>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              Nesting describes in Jasmine
+            </h2>
+<pre>
+<code class="javascript">
+describe('test class', function() {
+  describe('test function 1', function() {
+    it('should do the thing', function() {});
+  });
+
+  describe('test function 2', function() {
+    it('should do the other thing', function() {});
+  });
+});
+</code>
+</pre>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              Introduction to Test-Driven Development
+            </h2>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              Writing a number formatter
+            </h2>
+            <p>
+              <b>Problem Statement:</b>
+            </p>
+            <p>
+              Write a function that formats a any number to an abbreviated form like
+              2K, 5M, 10B, 4T, where the letters represent thousands, millions, billions, and trillions.
+            </p>
+            <p>
+              Decimals should be rounded to the nearest tenth place (e.g. 2.1M)
+            </p>
+            <p class="keyword">
+              <b>
+                What do our test cases look like?
+              </b>
+            </p>
+          </div>
+        </section>
+
+      </article>
+      <!-- end article -->
+    </main>
+    <!-- end main -->
+
+    <!-- A global footer
+
+     <footer role="contentinfo">
+      <div class="wrap">
+        <p>An <a href="https://github.com/webslides/webslides">open source solution</a>, by <a href="https://twitter.com/webslides">@webslides</a>.</p>
+      </div>
+    </footer>  -->
+
+    <!-- Required -->
+    <script src="static/js/webslides.js"></script>
+    <script src="static/js/lib/highlight.pack.js"></script>
+    <script>
+      window.ws = new WebSlides();
+      console.log('hljs: ', hljs);
+      console.log('hljs.initHighlightingOnLoad: ', hljs.initHighlightingOnLoad);
+      hljs.initHighlightingOnLoad();
+
+    </script>
+
+    <script defer src="static/js/svg-icons.js"></script>
+
+  </body>
+
+</html>
