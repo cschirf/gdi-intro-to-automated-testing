@@ -668,6 +668,99 @@ describe('test class', function() {
         <section>
           <div class="wrap size-70 aligncenter">
             <h2>
+              Let&rsquo;s develop it!
+            </h2>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>Without Doubles</h2>
+            <h3>Problem Statement</h3>
+            <p>
+              Return the sum of two 6-sided dice rolls, each in the range 1..6.
+              However, if noDoubles is true, if the two dice show the same value,
+              increment one die to the next value, wrapping around to 1 if its value was 6.
+            </p>
+            <p>
+              Each die value is an integer. The flag <span class="mono">noDoubles</span> is a boolean.
+            </p>
+            <p>
+              Function header: <br/>
+              <span class="mono">withoutDoubles(die1, die2, noDoubles)</span>
+            </p>
+            <p class="footnote">
+              (Original problem <span class="mono">withoutDoubles</span> from
+              <a href="http://codingbat.com/prob/p115233">codingbat.com</a>)
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>Without Doubles</h2>
+            <h3>Example implementation</h3>
+<pre>
+<code class="javascript">
+var withoutDoubles = function(die1, die2, noDoubles) {
+  if (noDoubles && die1 === die2) {
+    if (die1 === 6) {
+      return die1 + 1;
+    }
+    return die1 + die2 + 1;
+  }
+
+  return die1 + die2;
+};
+</code>
+</pre>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>Without Doubles</h2>
+            <h3>Test cases</h3>
+<pre>
+<code class="javascript">
+// withoutDoubles(2, 3, true) => 5
+// withoutDoubles(3, 3, true) => 7
+// withoutDoubles(3, 3, false) => 6
+// withoutDoubles(2, 3, false) => 5
+// withoutDoubles(5, 4, true) => 9
+// withoutDoubles(5, 4, false) => 9
+// withoutDoubles(5, 5, true) => 11
+// withoutDoubles(5, 5, false) => 10
+// withoutDoubles(6, 6, true) => 7
+// withoutDoubles(6, 6, false) => 12
+// withoutDoubles(1, 6, true) => 7
+// withoutDoubles(6, 1, false) => 7
+</code>
+</pre>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>Blackjack</h2>
+            <h3>Problem Statement</h3>
+            <p>
+              Given the sum of the user&rsquo;s current hand and 2 possible cards, decide which
+              card the user should take that brings them the closest to 21 without going over.
+              Return <span class="mono">1</span> if the user should return the first option
+              and <span class="mono">2</span> if the user should return the second item. Return
+              <span class="mono">0</span> if both cards take them over 21.
+            </p>
+            <p>
+              Function header: <br/>
+              <span class="mono">blackjack(currentHand, firstCard, secondCard)</span>
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
               Introduction to Test-Driven Development
             </h2>
           </div>
