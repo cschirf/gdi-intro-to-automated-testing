@@ -249,9 +249,10 @@
             </h2>
             <h3>Left-over State</h3>
             <p>
-              One test case leaves behind state that messes up other tests.
+              One test case leaves behind state that messes up other tests
+              (or which other tests inadvertently rely on).
               One indicator: if a test passes when run by itself, but fails
-              when run as part of the test file or suite.
+              when run as part of the test file or suite (or vice-versa).
             </p>
             <p>
               The Fix: Figure out which test is leaving behind state and update it
