@@ -4,35 +4,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- CLEAN MARKUP = GOOD KARMA.
-      Hi source code lover,
-
-      you're a curious person and a fast learner ;)
-      Let's make something beautiful together. Contribute on Github:
-      https://github.com/webslides/webslides
-
-      Thanks,
-      @jlantunez.
-    -->
-
     <!-- SEO -->
     <title>GDI: Intro to Testing with application in JS/Jasmine</title>
-    <meta name="description" content="WebSlides is the easiest way to make HTML presentations, portfolios, and landings. Just essential features.">
+    <meta name="description" content="Girl Develop It (GDI): Intro to Testing with application in JS/Jasmine">
 
     <!-- URL CANONICAL -->
     <!-- <link rel="canonical" href="http://your-url.com/"> -->
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,700,700i%7CMaitree:200,300,400,600,700&amp;subset=latin-ext" rel="stylesheet">
-
-    <!-- CSS Base -->
     <link rel="stylesheet" type='text/css' media='all' href="static/css/base.css">
-
-    <!-- CSS Colors -->
     <link rel="stylesheet" type='text/css' media='all' href="static/css/colors.css">
-
-    <!-- Optional - CSS SVG Icons (Font Awesome) -->
     <link rel="stylesheet" type='text/css' media='all' href="static/css/svg-icons.css">
+    <link rel="stylesheet" type='text/css' media='all' href="static/css/lib/highlight-themes/monokai.css">
 
     <!-- SOCIAL CARDS (ADD YOUR INFO) -->
 
@@ -53,13 +35,13 @@
     <meta name="twitter:image" content="static/images/share-webslides.jpg"> <!-- EDIT -->
 
     <!-- FAVICONS -->
-    <link rel="shortcut icon" sizes="16x16" href="static/images/favicons/favicon.png">
-    <link rel="shortcut icon" sizes="32x32" href="static/images/favicons/favicon-32.png">
+    <!-- <link rel="shortcut icon" sizes="16x16" href="static/images/favicons/favicon.png"> -->
+    <!-- <link rel="shortcut icon" sizes="32x32" href="static/images/favicons/favicon-32.png">
     <link rel="apple-touch-icon icon" sizes="76x76" href="static/images/favicons/favicon-76.png">
     <link rel="apple-touch-icon icon" sizes="120x120" href="static/images/favicons/favicon-120.png">
     <link rel="apple-touch-icon icon" sizes="152x152" href="static/images/favicons/favicon-152.png">
     <link rel="apple-touch-icon icon" sizes="180x180" href="static/images/favicons/favicon-180.png">
-    <link rel="apple-touch-icon icon" sizes="192x192" href="static/images/favicons/favicon-192.png">
+    <link rel="apple-touch-icon icon" sizes="192x192" href="static/images/favicons/favicon-192.png"> -->
 
     <!-- Android -->
     <meta name="mobile-web-app-capable" content="yes">
@@ -67,38 +49,9 @@
 
   </head>
   <body>
-    <!-- <header role="banner">
-      <nav role="navigation">
-        <p class="logo"><a href="index.html" title="WebSlides">WebSlides</a></p>
-        <ul>
-          <li class="github">
-            <a rel="external" href="https://github.com/webslides/webslides" title="Github">
-              <svg class="fa-github">
-                <use xlink:href="#fa-github"></use>
-              </svg>
-              <em>WebSlides</em>
-            </a>
-          </li>
-          <li class="twitter">
-            <a rel="external" href="https://twitter.com/webslides" title="Twitter">
-              <svg class="fa-twitter">
-                <use xlink:href="#fa-twitter"></use>
-              </svg>
-              <em>@WebSlides</em>
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </header> -->
 
     <main role="main">
       <article id="webslides" class="vertical">
-        <!-- Quick Guide
-          - Each parent <section> in the <article id="webslides"> element is an individual slide.
-          - Vertical sliding = <article id="webslides" class="vertical">
-          - <div class="wrap"> = container 90% / <div class="wrap size-50"> = 45%;
-        -->
-
         <section>
           <div class="wrap aligncenter">
             <img src="static/images/logo/circle-gdi-logo.png" style="padding-bottom: 30px;" />
@@ -160,6 +113,23 @@
             <p>
               courtneys@girldevelopit.com
             </p>
+          </div>
+        </section>
+
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              Stuff you need for this course
+            </h2>
+            <ul>
+              <li>
+                A computer that can run JavaScript and has Node and npm installed on it.
+              </li>
+              <li>
+                A basic understanding of JavaScript, especially functions.
+              </li>
+            </ul>
           </div>
         </section>
 
@@ -246,7 +216,7 @@
                 The only way to know if your code work is to test it.
               </li>
               <li>
-                Just because you tested it by hand doesn't mean you hit all the edge cases.
+                Just because you tested it by hand doesn&rsquo;t mean you hit all the edge cases.
               </li>
               <li>
                 Your code working when you tested it at the time of writing it does not mean it works now.
@@ -254,9 +224,9 @@
             </ul>
             <!-- <p>
               If you want to make sure your code works, you need to test it.
-              Just because your code worked yesterday or even this morning doesn't
+              Just because your code worked yesterday or even this morning doesn&rsquo;t
               mean that's true by the time it's pushed to prod.
-              It doesn't even mean that it works in all expected cases.
+              It doesn&rsquo;t even mean that it works in all expected cases.
               Especially when testing manually or when we feel under pressure to
               get something out, it's hard to think critically about where the
               rough edges and boundary cases are.
@@ -270,16 +240,34 @@
             <h2>
               What automated testing gets you
             </h2>
+            <h3>Isolate bugs</h3>
+            <ul>
+              <li>
+                If a regression does happen, you know where it is.
+              </li>
+              <li>
+                The faster you can pinpoint the source of an error, the faster you can fix it.
+              </li>
+            </ul>
+          </div>
+        </section>
+
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              What automated testing gets you
+            </h2>
             <h3>Confidence in refactoring/rewrites</h3>
             <ul>
               <li>
-                It's nerve-wracking to try to fix code when you're not sure if you'll break something in the process.
+                It's nerve-wracking to try to fix code when you&rsquo;re not sure if you&rsquo;ll break something in the process.
               </li>
               <li>
-                This is especially true if the code you're changing is significantly complex (i.e. actually worth anything).
+                This is especially true if the code you&rsquo;re changing is significantly complex (i.e. actually worth anything).
               </li>
               <li>
-                So people usually don't clean it up. This is one very real reason for <strong>code rot</strong>.
+                So people usually don&rsquo;t clean it up. This is one very real reason for <strong>code rot</strong>.
                 (It is <em>not</em> a coincidence that often the most important pieces of code are the ugliest.)
               </li>
             </ul>
@@ -298,7 +286,7 @@
                 They run <em>much</em> faster than manual testing (they're code!)
               </li>
               <li>
-                You know very quickly if you've broken any functionality
+                You know very quickly if you&rsquo;ve broken any functionality
               </li>
               <li>
                 Ideal setup: your tests run every time the code changes
@@ -313,7 +301,7 @@
               This is ideal because the feedback cycle is the shortest it can be.
             </p> -->
             <!-- <p>
-              Unless you've got a much, much less-than-ideal setup, you can run these tests in every environment.
+              Unless you&rsquo;ve got a much, much less-than-ideal setup, you can run these tests in every environment.
               This means that you can include a test run each time your app builds.
             </p> -->
           </div>
@@ -349,7 +337,7 @@
             <h3>Tests as documentation</h3>
             <ul>
               <li>
-                If you've written good tests
+                If you&rsquo;ve written good tests
               </li>
               <li>
 
@@ -373,7 +361,7 @@
                 It's easy to throw problems onto someone else.
               </li>
               <li>
-                If you get used to doing that, it's easy to believe that code quality issues aren't your problem (spoiler: they are).
+                If you get used to doing that, it's easy to believe that code quality issues aren&rsquo;t your problem (spoiler: they are).
               </li>
               <li>
                 It's also easy to get sloppy because you expect someone else will find and/or fix your bugs for you.
@@ -395,7 +383,7 @@
             <h3>Being a better developer</h3>
             <ul>
               <li>
-                Writing good test cases means thinking critically about the problem you've been given to solve.
+                Writing good test cases means thinking critically about the problem you&rsquo;ve been given to solve.
               </li>
               <li>
                 This takes a certain mindset, but developing that mindset will make you a better engineer and more generally, a better problem solver.
@@ -410,7 +398,7 @@
         <section>
           <div class="wrap size-70 aligncenter">
             <p>
-              If you're doing test-driven development (TDD) you get extra benefits.
+              If you&rsquo;re doing test-driven development (TDD) you get extra benefits.
             </p>
           </div>
         </section>
@@ -422,23 +410,26 @@
               Test-driven development
             </h2>
             <p>
-              You write your tests before you write the code.
+              <em><strong>You write your tests before you write the code.</strong></em>
             </p>
             <p>
-              Mantra: <strong>Red, Green, Refactor</strong>
+              Tests are <strong>first-class citizens</strong>, not an afterthought.
+            </p>
+            <p>
+              Mantra: Red, Green, Refactor
             </p>
             <ol>
               <li>
-                RED: Because you've written the test <em>before</em> the code, the test should fail.
+                <strong>RED</strong>: Because you&rsquo;ve written the test <em>before</em> the code, the test should fail.
                 You also need to make sure the test fails in the way you expect.
                 Bonus points for making sure you get a useful error message when it fails.
               </li>
               <li>
-                GREEN: Fix the test by writing the necessary code.
+                <strong>GREEN</strong>: Fix the test by writing the necessary code.
               </li>
               <li>
-                REFACTOR: Once the test passes, take another look at the code and see if you can make
-                it prettier. Because you have the test there as your safety net, you're assured you'll
+                <strong>REFACTOR</strong>: Once the test passes, take another look at the code and see if you can make
+                it prettier. Because you have the test there as your safety net, you&rsquo;ll
                 know if your refactor breaks anything.
               </li>
             </ol>
@@ -454,16 +445,39 @@
             <h3>Requirements clarification / reduce time waste</h3>
             <ul>
               <li>
-                We don't always get clear-cut requirements.
+                We don&rsquo;t always get clear-cut requirements.
               </li>
               <li>
                 When you write the test first, you have to know upfront exactly what's being asked of you, and that's ideal.
               </li>
               <li>
-                If you can't write the test, you know you don't have enough clarity on what's been asked.
+                If you can&rsquo;t write the test, you know you don&rsquo;t have enough clarity on what's been asked.
               </li>
               <li>
-                You also know <em>where</em> you're missing clarity. You can take that information back to the appropriate people and work out what's needed before you waste development time.
+                You also know <em>where</em> you&rsquo;re missing clarity. You can take that information back to the appropriate people and work out what's needed before you waste development time.
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              Example
+            </h2>
+            <h3>Requirements clarification / reduce time waste</h3>
+            <p>
+              Original requirement: Create a user with the given information if it doesn&rsquo;t already exist.
+            </p>
+            <ul>
+              <li>
+                What determines if the user exists? The username? The email? Something else?
+              </li>
+              <li>
+                Which information is required?
+              </li>
+              <li>
+                What if the user does exist? Is that an error? A no-op? Should the user information be updated?
               </li>
             </ul>
           </div>
@@ -479,15 +493,14 @@
             <ul>
               <li>
                 Related to clarifying the requirements is the idea of gold-plating.
-                If we don't really know what's expected, we are likely to add extra code that doesn't really do anything.
+                If we don&rsquo;t really know what's expected, we are likely to add extra code that doesn&rsquo;t really do anything.
               </li>
               <li>
                 But extra code means extra complexity and more to maintain.
               </li>
               <li>
-                Because you have a test, you can make sure you're only writing the code you
-                need to solve the problem. If you think there's something you can get rid of, great.
-                If the test still passes, you're golden.
+                Because you have a gauge to determine when you&rsquo;re done (the tests),
+                you only write as much as you need to to get the test(s) to pass. No more, no less.
               </li>
             </ul>
           </div>
@@ -511,10 +524,10 @@
                   You can fix the bug faster because you can reproduce it reliably and quickly
                 </li>
                 <li>
-                  You have more confidence that you've really fixed the issue
+                  You have more confidence that you&rsquo;ve really fixed the issue
                 </li>
                 <li>
-                  Now that case is part of the test suite, so you are also assured that you won't have that regression again
+                  Now that case is part of the test suite, so you are also assured that you won&rsquo;t have that regression again
                 </li>
               </ul>
             </p>
@@ -587,16 +600,92 @@
         <section>
           <div class="wrap size-70 aligncenter">
             <h2>
+              Unit testing
+            </h2>
+            <ul>
+              <li>
+                This is the most ubiquitous kind of testing.
+              </li>
+              <li>
+                Here, you test at the finest-grained level. You&rsquo;re testing a function or a part of a function.
+              </li>
+              <li>
+                Generally, this is where you would mock data (we'll talk about mocking a little later).
+              </li>
+              <li>
+                This level of granularity means that you&rsquo;ll have a lot of them, but they also run the fastest.
+              </li>
+            </ul>
+          </div>
+        </section>
+
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              Integration testing
+            </h2>
+            <ul>
+              <li>
+                Where you test how two pieces of code interact with each other.
+                Also used to describe tests that touch a database.
+              </li>
+              <li>
+                These can be a little more complicated than unit tests, but
+                they are vital to make sure the various parts of the system are working together as expected.
+              </li>
+              <li>
+                You should not mock in integration tests.
+              </li>
+            </ul>
+          </div>
+        </section>
+
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              End-to-end / User acceptance tests
+            </h2>
+            <ul>
+              <li>
+                You are testing the application from the perspective of a user.
+                E.g., frameworks like Selenium allow you to mimick a user clicking
+                elements on a page.
+              </li>
+              <li>
+                This means it's the coarsest-grained kind of test.
+              </li>
+              <li>
+                These tend to take the longest to run and are the most brittle.
+                They're definitely important, but you don&rsquo;t want as many of these as unit tests.
+                They also tend to take the most development effort to setup and maintain.
+              </li>
+              <li>
+                If you don&rsquo;t have any tests, these are likely the tests you want to
+                start with. Trying to make up unit or integration tests is even more time-consuming
+                and sometimes isn&rsquo;t even possible. At least with user acceptance tests, you
+                know when something is broken.
+              </li>
+            </ul>
+          </div>
+        </section>
+
+
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
               Testing philosophies: Proportions
             </h2>
             <h3>&ldquo;Pyramid&rdquo;</h3>
             <ul>
               <li>
-                The traditional formula (doesn't make it the right one, though)
+                The traditional formula (doesn&rsquo;t make it the right one, though)
               </li>
             </ul>
 
-            PUT A PICTURE HERE OF THE TESTING PYRAMID
+            <img class="center-block" src="static/images/testing-pyramid.svg" style="height: 50vh;" />
           </div>
         </section>
 
@@ -609,11 +698,11 @@
             <h3>&ldquo;House&rdquo;</h3>
             <ul>
               <li>
-                My fav
+                You still want fewer end-to-end tests
               </li>
             </ul>
 
-            PUT A PICTURE HERE OF THE TESTING HOUSE
+            <img class="center-block" src="static/images/testing-house.svg" style="height: 50vh;" />
           </div>
         </section>
 
@@ -637,7 +726,7 @@
                 And just like with any metric, you can game the system.
               </li>
               <li>
-                My advice: Make sure you're testing what your users will use.
+                My advice: Make sure you&rsquo;re testing what your users will use.
                 If your code base is tight, then you will have a high test coverage percentage as a matter of course.
               </li>
             </ul>
@@ -654,7 +743,148 @@
             </h2>
             <ul>
               <li>
+                Grew out of TDD and incorporates large parts of <strong>domain-driven design</strong>,
+                especially the concept of <strong>ubiquitous language</strong>
+              </li>
+              <li>
+                Helps focus tests by giving guidance on:
+                <ul>
+                  <li>
+                    what to test and what not to test
+                  </li>
+                  <li>
+                    how to name tests
+                  </li>
+                  <li>
+                    how much to test in one go
+                  </li>
+                  <li>
+                    how to understand why a test fails
+                  </li>
+                </ul>
+              </li>
+              <li>
+                Looks like a user acceptance criteria and many BDD frameworks use a syntax that mirrors this
+              </li>
+            </ul>
+          </div>
+        </section>
 
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              Testing philosophies: <br /> Behavior-driven development (BDD)
+            </h2>
+            <h3>BDD example (Gherkin): Library</h3>
+
+            <pre><code class="gherkin">
+Scenario: Checkout book
+
+Given the library is open
+  And the patron's library card is valid
+When the patron tries to check out book
+Then ensure the book is added to the patron's account
+  And ensure the patron receives a receipt
+  And ensure the patron's library card is returned
+</code>
+</pre>
+          </div>
+        </section>
+
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              A very incomplete cheat sheet of testing libraries by language &amp; methodology
+            </h2>
+            <table>
+              <tr>
+                <td>
+                  JavaScript
+                </td>
+                <td>
+                  Mocha, Chai, Jasmine, Karma, Enzyme, Jest
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Ruby
+                </td>
+                <td>
+                  Rspec, minitest
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  JVM
+                </td>
+                <td>
+                  JUnit, Spock
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Python
+                </td>
+                <td>
+                  unittest
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  E2E
+                </td>
+                <td>
+                  Selenium (multi-language)
+                  <br />
+                  protractor (Angular)
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  BDD
+                </td>
+                <td>
+                  Cucumber (multi-language)
+                  <br />
+                  Spock, JBehave (JVM)
+                  <br />
+                  Jasmine, Mocha (JS)
+                  <br />
+                  Spinach (ruby)
+                </td>
+              </tr>
+            </table>
+          </div>
+        </section>
+
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h3>Next time on <i>Adventures of a Testing b0$$</i></h3>
+            <p>
+              In the second part of this course, we&rsquo;ll be writing tests for
+              vanilla JS code using Jasmine as our test runner.
+            </p>
+            <br />
+            <div class="center-block">
+              <img class="center-block" style="width: 50vw; background-color: #fff; padding: 10px;" src="static/images/jasmine-logo.svg" />
+            </div>
+          </div>
+        </section>
+
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              Resources
+            </h2>
+            <ul>
+              <li>
+                <a href="https://dannorth.net/introducing-bdd/">
+                  Original BDD article by Dan North
+                </a>
               </li>
               <li>
 
@@ -685,11 +915,14 @@
 
     <!-- Required -->
     <script src="static/js/webslides.js"></script>
+    <script src="static/js/lib/highlight.pack.js"></script>
     <script>
       window.ws = new WebSlides();
+      console.log('hljs: ', hljs);
+      console.log('hljs.initHighlightingOnLoad: ', hljs.initHighlightingOnLoad);
+      hljs.initHighlightingOnLoad();
     </script>
 
-    <!-- OPTIONAL - svg-icons.js (fontastic.me - Font Awesome as svg icons) -->
     <script defer src="static/js/svg-icons.js"></script>
 
   </body>

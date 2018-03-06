@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="433px" height="410px" viewBox="0 0 433 410" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 45.1 (43504) - http://www.bohemiancoding.com/sketch -->
+    <title>testing-house</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="137" width="432.101563" height="272.3125"></rect>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <polygon id="Triangle" stroke="#979797" fill="#1BBC9B" points="216.050781 0.84765625 432.101563 137 0 137"></polygon>
+        <g id="Rectangle">
+            <use fill="#1BBC9B" fill-rule="evenodd" xlink:href="#path-1"></use>
+            <rect stroke="#979797" stroke-width="1" x="0.5" y="137.5" width="431.101563" height="271.3125"></rect>
+        </g>
+        <text id="unit-tests" font-family="Raleway-SemiBold, Raleway" font-size="30" font-weight="500" fill="#4A4A4A">
+            <tspan x="150.45" y="352">unit tests</tspan>
+        </text>
+        <text id="integration-tests" font-family="Raleway-SemiBold, Raleway" font-size="30" font-weight="500" fill="#4A4A4A">
+            <tspan x="101.47" y="223">integration tests</tspan>
+        </text>
+        <text id="user-acceptance-test" font-family="Raleway-SemiBold, Raleway" font-size="30" font-weight="500" fill="#4A4A4A">
+            <tspan x="185.39" y="60">user</tspan>
+            <tspan x="133.025" y="95">acceptance</tspan>
+            <tspan x="181.88" y="130">tests</tspan>
+        </text>
+        <path d="M0.444322221,277.5 L429.504661,277.5" id="Line" stroke="#979797" stroke-linecap="square"></path>
+    </g>
+</svg>

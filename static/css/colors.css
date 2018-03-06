@@ -86,10 +86,24 @@ h3 {
 }
 
 ul,
-ol,
-ul ul {
+ol {
   text-align: left;
   font-size: 2em;
+}
+
+ul ul,
+li li {
+  font-size: 1em;
+}
+
+ul ul:first-child,
+li li:first-child {
+  padding-top: 0.3em;
+}
+
+ul ul:last-child,
+li li:last-child {
+  padding-bottom: 0;
 }
 
 ul,
@@ -98,8 +112,12 @@ ul ul {
 }
 
 li {
-  line-height: 1.0;
+  line-height: 1.1;
   padding-bottom: 0.5em;
+}
+
+strong {
+  font-weight: 800;
 }
 
 .header--small {
@@ -127,7 +145,7 @@ a,
 .bg-white a,
 .bg-light a,
 .bg-gradient-white a {
-  color: #1bbc9b;
+  color: #c4fff2;
 }
 
 a:hover {
@@ -176,7 +194,7 @@ color: inherit;
 pre {
   border: 1px solid rgba(0, 20, 80, 0.1);
   box-shadow: 0 8px 16px rgba(0,20,80,.04),0 4px 16px rgba(0,0,0,.08);
-  background: #fff;
+  background: #272822;
 }
 
 pre:hover {

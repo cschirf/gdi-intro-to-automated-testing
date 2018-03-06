@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="621px" height="532px" viewBox="0 0 621 532" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 45.1 (43504) - http://www.bohemiancoding.com/sketch -->
+    <title>testing-pyramid</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <polygon id="Triangle" stroke="#979797" fill="#1BBC9B" points="310.5 1 620 531 1 531"></polygon>
+        <text id="unit-tests" font-family="Raleway-SemiBold, Raleway" font-size="30" font-weight="500" fill="#4A4A4A">
+            <tspan x="245.45" y="465">unit tests</tspan>
+        </text>
+        <text id="integration-tests" font-family="Raleway-SemiBold, Raleway" font-size="30" font-weight="500" fill="#4A4A4A">
+            <tspan x="195.47" y="317">integration tests</tspan>
+        </text>
+        <text id="user-acceptance-test" font-family="Raleway-SemiBold, Raleway" font-size="30" font-weight="500" fill="#4A4A4A">
+            <tspan x="279.39" y="140">user</tspan>
+            <tspan x="227.025" y="175">acceptance</tspan>
+            <tspan x="275.88" y="210">tests</tspan>
+        </text>
+        <path d="M89.4443222,380.5 L532.5,380.5" id="Line" stroke="#979797" stroke-linecap="square"></path>
+        <path d="M186.444322,215.5 L434.508063,215.5" id="Line" stroke="#979797" stroke-linecap="square"></path>
+    </g>
+</svg>
