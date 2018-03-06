@@ -512,7 +512,7 @@ describe('hello', function() {
 <pre>
 <code class="javascript">
 var hello = function(name) {
-var isInputValid = name && typeof name === 'string' && name.trim().length > 0;
+  var isInputValid = name && typeof name === 'string' && name.trim().length > 0;
 
   if (!isInputValid) {
     return 'Hello!';
@@ -670,6 +670,304 @@ describe('test class', function() {
             <h2>
               Introduction to Test-Driven Development
             </h2>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter shrink">
+            <h2>
+              TDD Approach: Review
+            </h2>
+            <ul>
+              <li>
+                Step 1: <span class="red">Red</span>
+                <ul>
+                  <li>
+                    Write test cases. The <em>tests should fail for the expected reason(s)</em>
+                    (e.g., because the implementation is not correct, <em>not</em> compile or runtime errors).
+                    At this point, check failure messages to ensure they accurately indicate the problem.
+                    Fix wording as necessary.
+                  </li>
+                  <li>
+                    Write shell&mdash; write enough code to get the tests to <em>compile</em>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                Step 2: <span class="green">Green</span>
+                <ul>
+                  <li>
+                    <em>Write just enough code to get the tests to pass.</em> For a complex problem complex,
+                    you might consider taking an iterative approach to the code&mdash; e.g. write
+                    enough code to get part of the test suite to pass, then work on the next piece.
+                  </li>
+                </ul>
+              </li>
+              <li>
+                Step 3: <span class="refactor">Refactor</span>
+                <ul>
+                  <li>
+                    Take another pass over the code and <em>refactor</em> as necessary.
+                    Re-run the tests to ensure the refactor has not broken functionality.
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>Macaroon Party</h2>
+            <h3>Problem Statement</h3>
+            <p>
+              When squirrels get together for a party, they like to have macaroons.
+              A squirrel party is successful when the number of macaroons is between
+              40 and 60, inclusive. Unless it is the weekend, in which case there
+              is no upper bound on the number of macaroons. Return true if the party
+              with the given values is successful, or false otherwise.
+            </p>
+            <p>
+              <b>
+                Do you have questions about the requirements?
+              </b>
+            </p>
+            <p class="footnote">
+              (Original problem <span class="mono">cigarParty</span> from
+              <a href="http://codingbat.com/prob/p159531">codingbat.com</a>)
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>Macaroon Party</h2>
+            <h3>Test cases</h3>
+<pre>
+<code class="javascript">
+//   weekday, 40 -> true
+//   weekday, 60 -> true
+//   weekday, 61 -> false
+//   weekday, 39 -> false
+//   weekday, 0 -> false
+//   weekday, -1 -> false
+//   weekend, 40 -> true
+//   weekend, 60 -> true
+//   weekend, 61 -> true
+//   weekend, 100 -> true
+//   weekend, 39 -> false
+//   weekend, 0 -> false
+//   weekend, -1 -> false
+</code>
+</pre>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>Let&rsquo;s develop it!</h2>
+            <p>
+              The first step of TDD is <span class="red"><b>red</b></span>.
+              We need to <em>create a set of tests that fail as we expect</em>.
+              In order to support that, we also need to write
+              <em>just enough code under test to compile</em>.
+              We&rsquo;re not implementing any functionality yet.
+            </p>
+            <p>
+              On your own or with a friend, write the test set for the cases we
+              just came up with.
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>Macaroon Party</h2>
+            <h3>Step 1: Red</h3>
+<pre>
+<code class="javascript">
+var macaroonParty = function(numMacaroons, isWeekend) {
+  return false;
+}
+
+describe('macaroonParty', function() {
+  it('do the right thing on weekdays', function() {
+    expect(macaroonParty(40, false)).toBe(true);
+    expect(macaroonParty(60, false)).toBe(true);
+    expect(macaroonParty(61, false)).toBe(false);
+    expect(macaroonParty(39, false)).toBe(false);
+    expect(macaroonParty(0, false)).toBe(false);
+    expect(macaroonParty(-1, false)).toBe(false);
+  });
+
+  it('do the right thing on weekends', function() {
+    expect(macaroonParty(40, true)).toBe(true);
+    expect(macaroonParty(60, true)).toBe(true);
+    expect(macaroonParty(61, true)).toBe(true);
+    expect(macaroonParty(100, true)).toBe(true);
+    expect(macaroonParty(39, true)).toBe(false);
+    expect(macaroonParty(0, true)).toBe(false);
+    expect(macaroonParty(-1, true)).toBe(false);
+  });
+});
+</code>
+</pre>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>Let&rsquo;s develop it!</h2>
+            <p>
+              Brilliant! Step 1: done and done!
+            </p>
+            <p>
+              The second step of TDD is <span class="green"><b>green</b></span>.
+              Here is where we will implement the necessary functionality to
+              cause the tests to pass. By the end of this step, all tests will pass.
+            </p>
+            <p>
+              On your own or with a friend, write the necessary code to get the tests to pass.
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>Macaroon Party</h2>
+            <h3>Step 2: Green</h3>
+<pre>
+<code class="javascript">
+var macaroonParty = function(numMacaroons, isWeekend) {
+  if (isWeekend) {
+    return numMacaroons >= 40;
+  }
+
+  return !isWeekend && numMacaroons >= 40 && numMacaroons <= 60;
+};
+</code>
+</pre>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>Let&rsquo;s develop it!</h2>
+            <p>
+              Party parrot! We did it! 💪
+            </p>
+            <p>
+              We&rsquo;re not quite done yet, though. The third step of TDD,
+              <span class="refactor"><b>refactor</b></span>, is just as important
+              as the other two. Here is where we have an opportunity to <em>make our code
+              cleaner, more readable, and more maintanable</em>.
+            </p>
+            <p>
+              Let&rsquo;s look back over the example implementation. What can we do better?
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+<pre>
+<code class="javascript">
+var macaroonParty = function(numMacaroons, isWeekend) {
+  if (isWeekend) {
+    return numMacaroons >= 40;
+  }
+
+  return !isWeekend && numMacaroons >= 40 && numMacaroons <= 60;
+};
+</code>
+</pre>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>Macaroon party</h2>
+            <h3>Observations</h3>
+            <ul>
+              <li>
+                We only want to write just enough code to get the tests to pass.
+                <em>If we can remove a piece of code, but the tests still pass,
+                then that code is not doing anything</em> but bloating up the codebase.
+                What happens if we remove <span class="mono">!isWeekend</span> in the
+                second check?
+              </li>
+              <li>
+                It would be nice if we pulled out <span class="mono">40</span> and
+                <span class="mono">60</span> into <em>named constants</em>, instead
+                of leaving them as magic numbers in the codebase. That way the next
+                person who reads this piece of code will have a better idea of what
+                those numbers mean. It also helps avoid problems where someone copies a
+                number wrong.
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>Macaroon Party</h2>
+            <h3>Step 3: Refactor</h3>
+<pre>
+<code class="javascript">
+var MIN_MACAROONS_FOR_SUCCESSFUL_PARTY = 40;
+var MAX_MACAROONS_FOR_SUCCESSFUL_PARTY_WEEKDAYS = 60;
+
+var macaroonParty = function(numMacaroons, isWeekend) {
+  if (isWeekend) {
+    return numMacaroons >= MIN_MACAROONS_FOR_SUCCESSFUL_PARTY;
+  }
+
+  return numMacaroons >= MIN_MACAROONS_FOR_SUCCESSFUL_PARTY &&
+    numMacaroons <= MAX_MACAROONS_FOR_SUCCESSFUL_PARTY_WEEKDAYS;
+};
+</code>
+</pre>
+          </div>
+        </section>
+
+        <!--
+          Allow say 15-20 minutes for students to work through this example.
+          Instructors & TAs to answer questions & work 1-on-1 if needed
+        -->
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <p>
+              Yes! You did it! 🎉 ✨
+            </p>
+            <p>
+              That was so much fun, let&rsquo;s do it again!
+            </p>
+            <p>
+              This example is all you. Flag down the TAs if you&rsquo;ve got questions.
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>Date Fashion 💁</h2>
+            <h3>Problem Statement</h3>
+            <p>
+              You and your date are trying to get a table at a restaurant.
+              The parameter <span class="mono">you</span> is the stylishness of your clothes,
+              in the range 0..10, and <span class="mono">date</span> is the stylishness of
+              your date&rsquo;s clothes. The result getting the table is encoded
+              as an int value with <span class="mono">0=no</span>,
+              <span class="mono">1=maybe</span>,
+              <span class="mono">2=yes</span>. If either of you is very stylish,
+              8 or more, then the result is 2 (yes). With the exception that if
+              either of you has style of 2 or less, then the result is 0 (no).
+              Otherwise the result is 1 (maybe).
+            </p>
+            <p class="footnote">
+              (Original problem <span class="mono">dateFashion</span> from
+              <a href="http://codingbat.com/prob/p103360">codingbat.com</a>)
+            </p>
           </div>
         </section>
 
@@ -1131,6 +1429,22 @@ function roundBetter(number, precision) {
   }
 </code>
 </pre>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <h2>
+              Let&rsquo;s develop it!
+            </h2>
+          </div>
+        </section>
+
+        <section>
+          <div class="wrap size-70 aligncenter">
+            <p>
+              Given a list of
+            </p>
           </div>
         </section>
 

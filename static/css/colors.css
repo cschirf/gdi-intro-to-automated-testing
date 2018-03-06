@@ -69,7 +69,9 @@ h3,
 h4 {
   /*color: #e64c66;*/
   /*color: #1bbc9b;*/
-  color: #f9b8bb;
+  /* color: #C68588; */
+  /* color: #f95361; */
+  color: #FF8694;
 }
 
 h2 {
@@ -81,7 +83,7 @@ h2 {
 h3 {
   text-align: left;
   padding-top: 0.3em;
-  color: #f9b8bb;
+  color: #FF8694;
   font-weight: bold;
 }
 
@@ -121,11 +123,21 @@ strong {
 }
 
 .keyword {
-  color: #1bbc9b;
+  /* color: #1bbc9b; */
+  color: #f9b8bb;
+  /* color: #C68588; */
+  font-weight: bold;
+  /* background-color: #f9b8bb; */
+}
+
+.footnote {
+  font-size: 150%;
+  font-style: italic;
+  color: #e0e0e0;
 }
 
 .header--small {
-  color: #f9b8bb;
+  color: #FF8694;
 }
 
 :focus {
